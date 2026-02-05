@@ -2,12 +2,14 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { Menu, X, Instagram, Facebook } from 'lucide-react';
-import Image from 'next/image'; // Assuming we can use next/image now
 
 export default function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false);
+    const pathname = usePathname();
+    const isHome = pathname === '/';
 
     useEffect(() => {
         const handleScroll = () => {
@@ -17,8 +19,11 @@ export default function Navbar() {
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
+    // Force solid state if not on home page
+    const isSolid = !isHome || scrolled;
+
     return (
-        <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${scrolled ? 'bg-white/95 backdrop-blur-md shadow-sm py-2' : 'bg-transparent py-4'}`}>
+        <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${isSolid ? 'bg-white/95 backdrop-blur-md shadow-sm py-2' : 'bg-transparent py-4'}`}>
             <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
                 {/* Logo Area */}
                 <Link href="/" className="flex items-center gap-3 group">
@@ -30,10 +35,10 @@ export default function Navbar() {
                         />
                     </div>
                     <div className="flex flex-col md:flex-row md:items-center gap-1 md:gap-4 ml-2 transition-all">
-                        <span className={`font-serif text-xl md:text-3xl font-black tracking-tight ${scrolled ? 'text-text-primary' : 'text-white'} drop-shadow-md leading-tight`}>
+                        <span className={`font-serif text-xl md:text-3xl font-black tracking-tight ${isSolid ? 'text-text-primary' : 'text-white'} drop-shadow-md leading-tight`}>
                             Frenchies
                         </span>
-                        <span className={`font-marker text-base md:text-2xl tracking-widest ${scrolled ? 'text-green-primary' : 'text-green-light'} rotate-[-2deg] leading-tight`}>
+                        <span className={`font-marker text-base md:text-2xl tracking-widest ${isSolid ? 'text-green-primary' : 'text-green-light'} rotate-[-2deg] leading-tight`}>
                             R US
                         </span>
                     </div>
@@ -44,10 +49,10 @@ export default function Navbar() {
                     {['The Man', 'The Pups', 'The Lab', 'The Contract'].map((item) => (
                         <Link
                             key={item}
-                            href={`#${item.toLowerCase().replace(' ', '-').replace('the-', '') === 'man' ? 'about' :
+                            href={`${isHome ? '' : '/'}#${item.toLowerCase().replace(' ', '-').replace('the-', '') === 'man' ? 'about' :
                                 item.toLowerCase().replace(' ', '-').replace('the-', '') === 'pups' ? 'puppies' :
                                     item.toLowerCase().replace(' ', '-').replace('the-', '') === 'lab' ? 'dna' : 'trust'}`}
-                            className={`text-sm font-bold uppercase tracking-wider hover:text-green-primary transition-colors ${scrolled ? 'text-text-primary' : 'text-white drop-shadow-sm'}`}
+                            className={`text-sm font-bold uppercase tracking-wider hover:text-green-primary transition-colors ${isSolid ? 'text-text-primary' : 'text-white drop-shadow-sm'}`}
                         >
                             {item}
                         </Link>
@@ -56,10 +61,10 @@ export default function Navbar() {
                     <div className="h-6 w-px bg-gray-300/50"></div>
 
                     <div className="flex gap-4">
-                        <Link href="https://instagram.com/frenchiesrusny" target="_blank" className={`hover:text-green-primary transition-colors ${scrolled ? 'text-text-primary' : 'text-white'}`}>
+                        <Link href="https://instagram.com/frenchiesrusny" target="_blank" className={`hover:text-green-primary transition-colors ${isSolid ? 'text-text-primary' : 'text-white'}`}>
                             <Instagram size={20} />
                         </Link>
-                        <Link href="https://facebook.com/kevindbriggsjr" target="_blank" className={`hover:text-green-primary transition-colors ${scrolled ? 'text-text-primary' : 'text-white'}`}>
+                        <Link href="https://facebook.com/kevindbriggsjr" target="_blank" className={`hover:text-green-primary transition-colors ${isSolid ? 'text-text-primary' : 'text-white'}`}>
                             <Facebook size={20} />
                         </Link>
                     </div>
@@ -74,7 +79,7 @@ export default function Navbar() {
 
                 {/* Mobile Toggle */}
                 <button
-                    className={`md:hidden p-2 ${scrolled ? 'text-gray-800' : 'text-white'}`}
+                    className={`md:hidden p-2 ${isSolid ? 'text-gray-800' : 'text-white'}`}
                     onClick={() => setIsOpen(!isOpen)}
                 >
                     {isOpen ? <X size={28} /> : <Menu size={28} />}
