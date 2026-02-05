@@ -42,13 +42,13 @@ export default function RoyalLifestyle() {
 
                 {/* Action Shot Gallery (Small) */}
                 <div className="mt-20 grid grid-cols-1 md:grid-cols-3 gap-6">
-                    <div className="h-64 rounded-3xl overflow-hidden shadow-xl transform -rotate-1 hover:rotate-0 transition-all duration-500">
+                    <div className="h-64 rounded-3xl overflow-hidden shadow-xl transform -rotate-1 hover:rotate-0 transition-all duration-500 isolate transform-gpu">
                         <img src="/images/frenchie-pup-6.jpg" className="w-full h-full object-cover" alt="Happy Frenchie" />
                     </div>
-                    <div className="h-64 rounded-3xl overflow-hidden shadow-xl translate-y-4 hover:translate-y-0 transition-all duration-500">
+                    <div className="h-64 rounded-3xl overflow-hidden shadow-xl translate-y-4 hover:translate-y-0 transition-all duration-500 isolate transform-gpu">
                         <img src="/images/frenchie-pup-15.jpg" className="w-full h-full object-cover" alt="Royal Treatment" />
                     </div>
-                    <div className="h-64 rounded-3xl overflow-hidden shadow-xl transform rotate-1 hover:rotate-0 transition-all duration-500">
+                    <div className="h-64 rounded-3xl overflow-hidden shadow-xl transform rotate-1 hover:rotate-0 transition-all duration-500 isolate transform-gpu">
                         <img src="/images/frenchie-pup-22.jpg" className="w-full h-full object-cover" alt="Adventure Pups" />
                     </div>
                 </div>

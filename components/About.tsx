@@ -6,7 +6,7 @@ export default function About() {
             <div className="max-w-7xl mx-auto px-6">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
                     {/* Image Side */}
-                    <div className="relative rounded-3xl overflow-hidden h-[600px] shadow-2xl bg-gray-100 rotate-1 hover:rotate-0 transition-transform duration-500 group">
+                    <div className="relative rounded-3xl overflow-hidden h-[600px] shadow-2xl bg-gray-100 rotate-1 hover:rotate-0 transition-all duration-500 group isolate transform-gpu">
                         {/* Using the real image of Kevin D Briggs Jr */}
                         <img
                             src="/images/kbriggs.jpg"
