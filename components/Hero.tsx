@@ -46,7 +46,7 @@ export default function Hero() {
                             muted
                             loop
                             playsInline
-                            className="w-full h-full object-cover"
+                            className="w-full h-full object-cover md:object-top"
                             poster={`/images/frenchie-pup-${index + 1}.jpg`}
                         >
                             <source src={src} type="video/mp4" />
