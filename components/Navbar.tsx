@@ -29,7 +29,7 @@ export default function Navbar() {
                             className="w-full h-full object-contain drop-shadow-[4px_4px_0px_#7B9A6D]"
                         />
                     </div>
-                    <div className="flex flex-col md:flex-row md:items-center gap-0.5 md:gap-2.5 ml-1 transition-all">
+                    <div className="flex flex-col md:flex-row md:items-center gap-1 md:gap-4 ml-2 transition-all">
                         <span className={`font-serif text-xl md:text-3xl font-black tracking-tight ${scrolled ? 'text-text-primary' : 'text-white'} drop-shadow-md leading-tight`}>
                             Frenchies
                         </span>
