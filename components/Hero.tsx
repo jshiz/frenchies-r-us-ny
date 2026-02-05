@@ -7,9 +7,11 @@ import { ArrowRight } from 'lucide-react';
 // Hero video rotation - using specific requested videos
 const HERO_VIDEOS = [
     '/video/frenchie-cam-1.mp4',
+    '/video/frenchie-cam-11.mp4',
+    '/video/frenchie-cam-7.mp4',
+    '/video/frenchie-cam-14.mp4',
     '/video/frenchie-cam-10.mp4',
     '/video/frenchie-cam-4.mp4',
-    '/video/frenchie-cam-2.mp4',
 ];
 
 export default function Hero() {
@@ -39,8 +41,8 @@ export default function Hero() {
                     <div
                         key={src}
                         className={`absolute inset-0 transition-opacity duration-1000 ${index === currentVideoIndex && !isTransitioning
-                                ? 'opacity-70'
-                                : 'opacity-0'
+                            ? 'opacity-70'
+                            : 'opacity-0'
                             }`}
                     >
                         <video
@@ -49,7 +51,7 @@ export default function Hero() {
                             loop
                             playsInline
                             className="w-full h-full object-cover"
-                            poster="/images/frenchie-pup-1.jpg"
+                            poster={`/images/frenchie-pup-${(index % 10) + 1}.jpg`}
                         >
                             <source src={src} type="video/mp4" />
                         </video>
@@ -111,8 +113,8 @@ export default function Hero() {
                                 }, 500);
                             }}
                             className={`h-1 rounded-full transition-all duration-300 ${index === currentVideoIndex
-                                    ? 'bg-white w-12'
-                                    : 'bg-white/40 w-8 hover:bg-white/60'
+                                ? 'bg-white w-12'
+                                : 'bg-white/40 w-8 hover:bg-white/60'
                                 }`}
                             aria-label={`Switch to video ${index + 1}`}
                         />
