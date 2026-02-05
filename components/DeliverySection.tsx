@@ -1,4 +1,4 @@
-'use call client';
+'use client';
 
 import { Plane, Truck, MapPin, Globe, CheckCircle } from 'lucide-react';
 
