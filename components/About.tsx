@@ -6,27 +6,31 @@ export default function About() {
             <div className="max-w-7xl mx-auto px-6">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
                     {/* Image Side */}
-                    <div
-                        className="relative rounded-[2rem] overflow-hidden h-[600px] shadow-2xl bg-gray-100 rotate-1 hover:rotate-0 transition-all duration-700 group isolate transform-gpu"
-                        style={{ backfaceVisibility: 'hidden', WebkitMaskImage: '-webkit-radial-gradient(white, black)' }}
-                    >
-                        {/* Using the real image of Kevin D Briggs Jr */}
-                        <img
-                            src="/images/kbriggs.jpg"
-                            alt="Kevin D Briggs Jr - The King of Frenchies"
-                            className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-all duration-700"
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+                    <div className="relative h-[600px] rotate-1 hover:rotate-0 transition-all duration-700 group">
+                        {/* Image Container with Masking */}
+                        <div
+                            className="absolute inset-0 rounded-[2.5rem] overflow-hidden shadow-2xl bg-gray-100 isolate"
+                            style={{ backfaceVisibility: 'hidden', WebkitMaskImage: '-webkit-radial-gradient(white, black)' }}
+                        >
+                            <img
+                                src="/images/kbriggs.jpg"
+                                alt="Kevin D Briggs Jr - The King of Frenchies"
+                                className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-all duration-1000"
+                            />
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent"></div>
+                        </div>
 
-                        <div className="absolute top-6 left-6 z-10">
-                            <div className="bg-white/90 backdrop-blur-sm text-text-primary px-4 py-2 rounded-lg shadow-xl transform -rotate-3 border-2 border-green-primary">
-                                <span className="font-marker text-xs uppercase tracking-widest block">Top Tier</span>
-                                <span className="font-serif font-bold text-lg leading-none">Empire Breeder</span>
+                        {/* Floating Badges - Outside the mask for maximum sharpness */}
+                        <div className="absolute top-8 left-8 z-20 transition-transform duration-500 group-hover:translate-x-2 group-hover:-translate-y-2">
+                            <div className="bg-white/95 backdrop-blur-md text-text-primary px-5 py-3 rounded-2xl shadow-[0_20px_40px_rgba(0,0,0,0.2)] transform -rotate-3 border-2 border-green-primary antialiased">
+                                <span className="font-marker text-xs uppercase tracking-[0.2em] block text-green-primary mb-1">Top Tier</span>
+                                <span className="font-serif font-black text-xl leading-none">Empire Breeder</span>
                             </div>
                         </div>
-                        <div className="absolute bottom-8 left-8 text-white z-10">
+
+                        <div className="absolute bottom-10 left-10 text-white z-20 transition-transform duration-500 group-hover:translate-y-[-8px]">
                             <p className="font-marker text-2xl mb-2 text-green-light drop-shadow-lg">The Man Behind the Brand</p>
-                            <p className="font-serif text-xl font-black tracking-wide drop-shadow-md underline decoration-green-primary decoration-4 underline-offset-8">Kevin D Briggs Jr</p>
+                            <p className="font-serif text-2xl font-black tracking-wide drop-shadow-2xl underline decoration-green-primary decoration-4 underline-offset-8">Kevin D Briggs Jr</p>
                         </div>
                     </div>
 
