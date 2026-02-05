@@ -23,8 +23,8 @@ const METHODS = [
 export default function DeliverySection() {
     return (
         <section id="delivery" className="py-24 bg-white relative overflow-hidden">
-            {/* Cityscape Silhouette overlay (very subtle) */}
-            <div className="absolute bottom-0 left-0 w-full h-64 bg-[url('/images/city-silhouette.png')] opacity-[0.03] bg-repeat-x bg-bottom pointer-events-none"></div>
+            {/* Subtle Gradient background instead of missing image */}
+            <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-cream/30 to-transparent pointer-events-none"></div>
 
             <div className="max-w-7xl mx-auto px-6 relative z-10">
                 <div className="text-center mb-20 space-y-4">
