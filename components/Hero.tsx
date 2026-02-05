@@ -4,14 +4,10 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 
-// Hero video rotation - using specific requested videos
+// Hero video rotation - specifically Cam 14 and Cam 12 for a professional loop
 const HERO_VIDEOS = [
-    '/video/frenchie-cam-1.mp4',
-    '/video/frenchie-cam-11.mp4',
-    '/video/frenchie-cam-7.mp4',
     '/video/frenchie-cam-14.mp4',
-    '/video/frenchie-cam-10.mp4',
-    '/video/frenchie-cam-4.mp4',
+    '/video/frenchie-cam-12.mp4',
 ];
 
 export default function Hero() {
@@ -26,9 +22,9 @@ export default function Hero() {
             setTimeout(() => {
                 setCurrentVideoIndex((prev) => (prev + 1) % HERO_VIDEOS.length);
                 setIsTransitioning(false);
-            }, 1000); // 1 second crossfade
+            }, 1500); // 1.5s ultra-smooth crossfade
 
-        }, 8000); // Switch every 8 seconds
+        }, 10000); // Switch every 10 seconds for a flowing feel
 
         return () => clearInterval(interval);
     }, []);
@@ -40,8 +36,8 @@ export default function Hero() {
                 {HERO_VIDEOS.map((src, index) => (
                     <div
                         key={src}
-                        className={`absolute inset-0 transition-opacity duration-1000 ${index === currentVideoIndex && !isTransitioning
-                            ? 'opacity-70'
+                        className={`absolute inset-0 transition-opacity duration-[2000ms] ease-in-out ${index === currentVideoIndex && !isTransitioning
+                            ? 'opacity-60'
                             : 'opacity-0'
                             }`}
                     >
@@ -51,7 +47,7 @@ export default function Hero() {
                             loop
                             playsInline
                             className="w-full h-full object-cover"
-                            poster={`/images/frenchie-pup-${(index % 10) + 1}.jpg`}
+                            poster={`/images/frenchie-pup-${index + 1}.jpg`}
                         >
                             <source src={src} type="video/mp4" />
                         </video>
@@ -59,66 +55,46 @@ export default function Hero() {
                 ))}
 
                 {/* Dark overlay for readability */}
-                <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/30 to-black/60 z-10" />
+                <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/20 to-black/70 z-10" />
             </div>
 
             {/* Content */}
             <div className="relative z-20 text-center max-w-5xl px-4 animate-fade-in-up">
                 {/* Graffiti Badge */}
-                <div className="inline-block relative mb-6 transform -rotate-2 hover:rotate-0 transition-transform duration-300">
-                    <div className="absolute inset-0 bg-white transform skew-x-[-10deg] rounded-md shadow-lg"></div>
-                    <span className="relative font-marker text-green-dark text-xl md:text-2xl px-6 py-2 block">
-                        The King of Frenchies 👑
+                <div className="inline-block relative mb-8 transform -rotate-1 hover:rotate-0 transition-all duration-500">
+                    <div className="absolute inset-0 bg-white transform skew-x-[-15deg] rounded-lg shadow-2xl"></div>
+                    <span className="relative font-marker text-green-dark text-xl md:text-3xl px-8 py-3 block leading-none">
+                        NYC'S FINEST FRENCHIES 👑
                     </span>
                 </div>
 
-                <h1 className="font-serif text-5xl md:text-8xl font-black text-white mb-6 leading-tight drop-shadow-2xl tracking-tight">
-                    FRENCHIES R US<br />
+                <h1 className="font-serif text-6xl md:text-[9rem] font-black text-white mb-8 leading-[0.8] drop-shadow-2xl tracking-tighter uppercase italic">
+                    Royal <br />
                     <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-light via-white to-green-light animate-pulse">
-                        NEW YORK
+                        Standard.
                     </span>
                 </h1>
 
-                <p className="font-sans text-lg md:text-2xl text-white/95 mb-12 max-w-3xl mx-auto leading-relaxed font-medium drop-shadow-md">
-                    Suburban Luxury meets Royal Bloodlines. Raising the <span className="font-marker text-yellow-300">highest quality</span> French Bulldogs in the Capital Region.
+                <p className="font-sans text-xl md:text-3xl text-white/90 mb-12 max-w-3xl mx-auto leading-tight font-black drop-shadow-md uppercase tracking-tight">
+                    Suburban Luxury. <span className="text-green-light">Elite Bloodlines.</span> <br className="hidden md:block" />
+                    Raising the bar in New York's Capital Region.
                 </p>
 
-                <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
+                <div className="flex flex-col sm:flex-row items-center justify-center gap-8">
                     <Link
                         href="#puppies"
-                        className="group bg-green-primary text-white border-2 border-green-primary px-10 py-4 rounded-full font-bold text-lg hover:bg-green-dark hover:border-green-dark transition-all flex items-center gap-2 shadow-[0_0_20px_rgba(123,154,109,0.5)] transform hover:-translate-y-1"
+                        className="group bg-green-primary text-white px-12 py-5 rounded-full font-black text-xs uppercase tracking-[0.3em] hover:bg-white hover:text-black transition-all shadow-[0_0_30px_rgba(123,154,109,0.3)] transform hover:-translate-y-1 flex items-center gap-4"
                     >
-                        Find Your Puppy
-                        <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
+                        Explore Pups
+                        <ArrowRight size={18} className="group-hover:translate-x-2 transition-transform" />
                     </Link>
 
                     <Link
                         href="#contact"
-                        className="bg-transparent backdrop-blur-md border-2 border-white text-white px-10 py-4 rounded-full font-bold text-lg hover:bg-white hover:text-black transition-all shadow-lg"
+                        className="bg-transparent backdrop-blur-md border-2 border-white/30 text-white px-12 py-5 rounded-full font-black text-xs uppercase tracking-[0.3em] hover:bg-white hover:text-black transition-all shadow-xl"
                     >
-                        Join the Family
+                        Join The HQ
                     </Link>
-                </div>
-
-                {/* Video Progress Indicators */}
-                <div className="flex gap-2 justify-center mt-12">
-                    {HERO_VIDEOS.map((_, index) => (
-                        <button
-                            key={index}
-                            onClick={() => {
-                                setIsTransitioning(true);
-                                setTimeout(() => {
-                                    setCurrentVideoIndex(index);
-                                    setIsTransitioning(false);
-                                }, 500);
-                            }}
-                            className={`h-1 rounded-full transition-all duration-300 ${index === currentVideoIndex
-                                ? 'bg-white w-12'
-                                : 'bg-white/40 w-8 hover:bg-white/60'
-                                }`}
-                            aria-label={`Switch to video ${index + 1}`}
-                        />
-                    ))}
                 </div>
             </div>
         </section>
