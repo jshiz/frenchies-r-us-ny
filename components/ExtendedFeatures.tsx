@@ -102,25 +102,36 @@ export default function ExtendedFeatures() {
                     </div>
                 </div>
 
-                {/* Third Creative Layer: Interesting Facts Ticker */}
-                <div className="mt-20 py-10 border-y border-gray-200 overflow-hidden relative group">
-                    <div className="flex animate-marquee whitespace-nowrap gap-20">
-                        {[
-                            "French Bulldogs are nicknamed 'Frog Dogs'",
-                            "Gestation is exactly 63 days",
-                            "DNA Locus: ay/ay coco dd at/a ky/ky",
-                            "Schenectady Bloodlines are Elite",
-                            "Bio-Sensor training starts Day 3",
-                            "Flight Nanny is standard delivery"
-                        ].map((fact, i) => (
-                            <div key={i} className="flex items-center gap-4">
-                                <div className="w-2 h-2 bg-green-primary rounded-full"></div>
-                                <span className="font-serif text-2xl md:text-3xl font-black text-text-primary uppercase italic tracking-tighter opacity-7 group-hover:opacity-100 transition-opacity">
-                                    {fact}
-                                </span>
-                            </div>
-                        ))}
-                    </div>
+            </div>
+
+            {/* Third Creative Layer: Interesting Facts Ticker - Full Width */}
+            <div className="mt-24 py-12 bg-text-primary border-y-4 border-green-primary overflow-hidden relative group">
+                {/* Subtle Grain Overlay */}
+                <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:16px_16px]"></div>
+
+                <div className="flex animate-marquee whitespace-nowrap gap-24 relative z-10">
+                    {[
+                        "French Bulldogs are nicknamed 'Frog Dogs'",
+                        "Gestation is exactly 63 days",
+                        "DNA Locus: ay/ay coco dd at/a ky/ky",
+                        "Schenectady Bloodlines are Elite",
+                        "Bio-Sensor training starts Day 3",
+                        "Flight Nanny is standard delivery",
+                        // Duplicating for seamless loop
+                        "French Bulldogs are nicknamed 'Frog Dogs'",
+                        "Gestation is exactly 63 days",
+                        "DNA Locus: ay/ay coco dd at/a ky/ky",
+                        "Schenectady Bloodlines are Elite",
+                        "Bio-Sensor training starts Day 3",
+                        "Flight Nanny is standard delivery"
+                    ].map((fact, i) => (
+                        <div key={i} className="flex items-center gap-6">
+                            <div className="w-3 h-3 bg-green-primary rounded-full shadow-[0_0_10px_#7B9A6D]"></div>
+                            <span className="font-serif text-3xl md:text-5xl font-black text-white uppercase italic tracking-tighter opacity-80 group-hover:opacity-100 transition-opacity">
+                                {fact}
+                            </span>
+                        </div>
+                    ))}
                 </div>
             </div>
         </section>
