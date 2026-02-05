@@ -28,29 +28,31 @@ export default function About() {
                     </div>
 
                     {/* Content Side */}
-                    <div className="space-y-8 animate-fade-in-up">
+                    <div className="space-y-8 animate-fade-in-up text-center lg:text-left">
                         <div className="inline-block transform -rotate-1 mb-2">
-                            <span className="font-marker text-green-primary text-xl tracking-widest uppercase">The Story</span>
+                            <span className="font-marker text-green-primary text-xl md:text-2xl tracking-widest uppercase">The Story</span>
                         </div>
-                        <h2 className="font-serif text-5xl md:text-6xl font-black leading-tight">
+                        <h2 className="font-serif text-5xl md:text-7xl font-black leading-[0.9] tracking-tighter uppercase italic">
                             Not a Kennel, <br />
                             <span className="text-green-primary">But a Home. 🏡</span>
                         </h2>
 
-                        <div className="space-y-6 text-text-secondary text-lg leading-relaxed">
-                            <p className="font-bold text-text-primary">
+                        <div className="space-y-6 text-text-secondary text-lg leading-relaxed max-w-xl mx-auto lg:mx-0">
+                            <p className="font-bold text-text-primary text-xl">
                                 Before it was a brand, it was a bond.
                             </p>
                             <p>
                                 Founded in the heart of the Capital Region, Frenchies R Us NY was born from Kevin D Briggs Jr's obsession with perfecting the breed. Disappointed by the lack of structural integrity and health standards in the exotic market, he set out to build a lineage that didn't just look royal—but lived like it.
                             </p>
                             <p>
-                                Every breeding at our HQ is a scientific endeavor. We prioritize the "Triple Crown": **Perfect Structure**, **Elite Genetics**, and **Bulletproof Health**. When you join our family, you aren't just buying a pet; you're inheriting a legacy of excellence that Kevin has cultivated over years of dedicated focus.
+                                Every breeding at our HQ is a scientific endeavor. We prioritize the "Triple Crown": **Perfect Structure**, **Elite Genetics**, and **Bulletproof Health**. When you join our family, you aren't just buying a pet; you're inheriting a legacy of excellence that Kevin has cultivated over years.
                             </p>
                         </div>
 
-                        <div className="pt-4">
-                            <p className="font-marker text-3xl text-wood-dark rotate-[-2deg] inline-block">– Kevin D Briggs Jr & Family</p>
+                        <div className="pt-4 flex justify-center lg:justify-start">
+                            <p className="font-marker text-2xl md:text-4xl text-wood-dark rotate-[-2deg] inline-block whitespace-nowrap">
+                                – Kevin D Briggs Jr & Family
+                            </p>
                         </div>
 
                         <div className="pt-6 grid grid-cols-3 gap-6">

@@ -19,26 +19,26 @@ export default function Navbar() {
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
-    // Force solid state if not on home page
-    const isSolid = !isHome || scrolled;
+    // Force solid state if not on home page OR if mobile menu is open
+    const isSolid = !isHome || scrolled || isOpen;
 
     return (
         <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${isSolid ? 'bg-white/95 backdrop-blur-md shadow-sm py-2' : 'bg-transparent py-4'}`}>
             <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
                 {/* Logo Area */}
-                <Link href="/" className="flex items-center gap-3 group">
-                    <div className="relative w-12 h-12 md:w-16 md:h-16 transition-transform group-hover:scale-110">
+                <Link href="/" className="flex items-center gap-2 md:gap-3 group shrink-0">
+                    <div className="relative w-10 h-10 md:w-16 md:h-16 transition-transform group-hover:scale-110">
                         <img
                             src="/frenchiesrus-logo-plain.png"
                             alt="Frenchies R Us NY"
                             className="w-full h-full object-contain drop-shadow-[4px_4px_0px_#7B9A6D]"
                         />
                     </div>
-                    <div className="flex flex-col md:flex-row md:items-center gap-1 md:gap-4 ml-2 transition-all">
-                        <span className={`font-serif text-xl md:text-3xl font-black tracking-tight ${isSolid ? 'text-text-primary' : 'text-white'} drop-shadow-md leading-tight`}>
+                    <div className="flex flex-row items-center gap-1.5 md:gap-4 ml-1 transition-all">
+                        <span className={`font-serif text-lg md:text-3xl font-black tracking-tight ${isSolid ? 'text-text-primary' : 'text-white'} drop-shadow-md leading-none`}>
                             Frenchies
                         </span>
-                        <span className={`font-marker text-base md:text-2xl tracking-widest ${isSolid ? 'text-green-primary' : 'text-green-light'} rotate-[-2deg] leading-tight`}>
+                        <span className={`font-marker text-sm md:text-2xl tracking-widest ${isSolid ? 'text-green-primary' : 'text-green-light'} rotate-[-2deg] leading-none whitespace-nowrap`}>
                             R US
                         </span>
                     </div>
@@ -79,7 +79,7 @@ export default function Navbar() {
 
                 {/* Mobile Toggle */}
                 <button
-                    className={`md:hidden p-2 ${isSolid ? 'text-gray-800' : 'text-white'}`}
+                    className={`md:hidden p-2 transition-colors ${isSolid ? 'text-gray-800' : 'text-white'}`}
                     onClick={() => setIsOpen(!isOpen)}
                 >
                     {isOpen ? <X size={28} /> : <Menu size={28} />}
@@ -88,26 +88,26 @@ export default function Navbar() {
 
             {/* Mobile Menu */}
             {isOpen && (
-                <div className="md:hidden absolute top-full left-0 w-full bg-white border-t border-gray-100 shadow-xl py-8 flex flex-col items-center gap-8 animate-fade-in-up">
+                <div className="md:hidden absolute top-full left-0 w-full bg-white border-t border-gray-100 shadow-2xl py-12 flex flex-col items-center gap-10 animate-fade-in-up">
                     {['The Man', 'The Pups', 'The Lab', 'The Contract'].map((item) => (
                         <Link
                             key={item}
-                            href={`#${item.toLowerCase().replace(' ', '-').replace('the-', '') === 'man' ? 'about' :
+                            href={`${isHome ? '' : '/'}#${item.toLowerCase().replace(' ', '-').replace('the-', '') === 'man' ? 'about' :
                                 item.toLowerCase().replace(' ', '-').replace('the-', '') === 'pups' ? 'puppies' :
                                     item.toLowerCase().replace(' ', '-').replace('the-', '') === 'lab' ? 'dna' : 'trust'}`}
-                            className="text-xl font-serif font-bold text-text-primary"
+                            className="text-2xl font-serif font-black text-text-primary tracking-tight hover:text-green-primary transition-colors"
                             onClick={() => setIsOpen(false)}
                         >
                             {item}
                         </Link>
                     ))}
 
-                    <div className="flex gap-6 mt-2">
-                        <Link href="https://instagram.com/frenchiesrusny" target="_blank" className="bg-gray-100 p-3 rounded-full text-text-primary">
-                            <Instagram size={24} />
+                    <div className="flex gap-8 mt-4">
+                        <Link href="https://instagram.com/frenchiesrusny" target="_blank" className="bg-gray-100 p-4 rounded-full text-text-primary hover:bg-green-primary hover:text-white transition-all">
+                            <Instagram size={28} />
                         </Link>
-                        <Link href="https://facebook.com/kevindbriggsjr" target="_blank" className="bg-gray-100 p-3 rounded-full text-text-primary">
-                            <Facebook size={24} />
+                        <Link href="https://facebook.com/kevindbriggsjr" target="_blank" className="bg-gray-100 p-4 rounded-full text-text-primary hover:bg-green-primary hover:text-white transition-all">
+                            <Facebook size={28} />
                         </Link>
                     </div>
                 </div>

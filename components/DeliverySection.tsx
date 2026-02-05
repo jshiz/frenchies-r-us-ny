@@ -57,18 +57,20 @@ export default function DeliverySection() {
                 </div>
 
                 {/* Dynamic Map Component Placeholder / Illustration */}
-                <div className="mt-20 relative p-1 md:p-4 bg-gray-100 rounded-[4rem] overflow-hidden shadow-inner border-8 border-white">
-                    <div className="aspect-[21/9] bg-[url('https://images.unsplash.com/photo-1521295121783-8a321d551ad2?auto=format&fit=crop&q=80&w=2000')] bg-cover bg-center grayscale opacity-30"></div>
-                    <div className="absolute inset-0 flex flex-col items-center justify-center p-8 bg-green-dark/20 backdrop-blur-[2px]">
-                        <div className="bg-white/90 backdrop-blur-md p-8 md:p-12 rounded-[3.5rem] shadow-2xl text-center max-w-2xl transform hover:scale-105 transition-transform">
-                            <Globe className="text-green-primary mx-auto mb-6 animate-spin-slow" size={64} />
-                            <h4 className="font-serif text-3xl md:text-4xl font-black mb-4 uppercase">No Cargo. Ever.</h4>
-                            <p className="text-text-secondary font-bold text-lg leading-relaxed">
+                <div className="mt-20 relative p-1 md:p-6 bg-gray-100 rounded-[3rem] md:rounded-[5rem] overflow-hidden shadow-inner border-4 md:border-8 border-white">
+                    <div className="aspect-[4/5] md:aspect-[21/9] bg-[url('https://images.unsplash.com/photo-1521295121783-8a321d551ad2?auto=format&fit=crop&q=80&w=2000')] bg-cover bg-center grayscale opacity-30"></div>
+                    <div className="absolute inset-0 flex flex-col items-center justify-center p-4 md:p-12 bg-green-dark/30 backdrop-blur-[2px]">
+                        <div className="bg-white/95 backdrop-blur-md p-6 md:p-16 rounded-[2.5rem] md:rounded-[4rem] shadow-2xl text-center max-w-2xl transform transition-transform border border-white">
+                            <Globe className="text-green-primary mx-auto mb-4 md:mb-8 animate-spin-slow" size={48} />
+                            <h4 className="font-serif text-2xl md:text-5xl font-black mb-4 uppercase tracking-tighter leading-none">NO CARGO.<br className="md:hidden" /> EVER.</h4>
+                            <p className="text-text-secondary font-bold text-sm md:text-xl leading-snug md:leading-relaxed">
                                 We refuse to ship our puppies in the cargo hold. Every Royal Frenchie is accompanied by a human guardian door-to-door. Luxury deserves nothing less.
                             </p>
-                            <div className="mt-8 flex flex-wrap justify-center gap-4">
+                            <div className="mt-6 md:mt-12 flex flex-wrap justify-center gap-2 md:gap-4">
                                 {['NYC', 'LAX', 'MIA', 'SFO', 'DXB', 'LHR'].map(airport => (
-                                    <span key={airport} className="px-4 py-1 bg-text-primary text-white font-mono text-[10px] rounded-full">{airport} READY</span>
+                                    <span key={airport} className="px-3 py-1 bg-text-primary text-white font-mono text-[9px] md:text-xs rounded-full shadow-lg shrink-0">
+                                        {airport} READY
+                                    </span>
                                 ))}
                             </div>
                         </div>
