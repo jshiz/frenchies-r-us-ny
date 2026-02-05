@@ -55,18 +55,20 @@ export default function About() {
                             </p>
                         </div>
 
-                        <div className="pt-6 grid grid-cols-3 gap-6">
-                            <div className="text-center p-4 bg-cream rounded-2xl transform hover:-translate-y-1 transition-transform border border-cream-dark">
-                                <div className="text-4xl font-black text-green-dark mb-1">5+</div>
-                                <div className="text-xs uppercase tracking-wider font-bold text-gray-500">Years Exp.</div>
-                            </div>
-                            <div className="text-center p-4 bg-cream rounded-2xl transform hover:-translate-y-1 transition-transform border border-cream-dark">
-                                <div className="text-4xl font-black text-green-dark mb-1">100%</div>
-                                <div className="text-xs uppercase tracking-wider font-bold text-gray-500">Health Gtd.</div>
-                            </div>
-                            <div className="text-center p-4 bg-cream rounded-2xl transform hover:-translate-y-1 transition-transform border border-cream-dark">
-                                <div className="text-4xl font-black text-green-dark mb-1">24/7</div>
-                                <div className="text-xs uppercase tracking-wider font-bold text-gray-500">Support</div>
+                        <div className="pt-8 flex justify-center lg:justify-start">
+                            <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6 w-full max-w-md lg:max-w-none">
+                                <div className="text-center p-5 md:p-6 bg-cream rounded-3xl transform hover:-translate-y-1 transition-all border border-cream-dark shadow-sm">
+                                    <div className="text-3xl md:text-5xl font-black text-green-dark mb-1 tracking-tighter">5+</div>
+                                    <div className="text-[9px] md:text-xs uppercase tracking-widest font-black text-gray-400">Years Exp.</div>
+                                </div>
+                                <div className="text-center p-5 md:p-6 bg-cream rounded-3xl transform hover:-translate-y-1 transition-all border border-cream-dark shadow-sm">
+                                    <div className="text-3xl md:text-5xl font-black text-green-dark mb-1 tracking-tighter">100%</div>
+                                    <div className="text-[9px] md:text-xs uppercase tracking-widest font-black text-gray-400">Health Gtd.</div>
+                                </div>
+                                <div className="text-center p-5 md:p-6 bg-cream rounded-3xl transform hover:-translate-y-1 transition-all border border-cream-dark shadow-sm col-span-2 md:col-span-1">
+                                    <div className="text-3xl md:text-5xl font-black text-green-dark mb-1 tracking-tighter">24/7</div>
+                                    <div className="text-[9px] md:text-xs uppercase tracking-widest font-black text-gray-400">Global Support</div>
+                                </div>
                             </div>
                         </div>
                     </div>
