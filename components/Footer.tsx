@@ -3,7 +3,7 @@ import { Instagram, Facebook, Phone, Mail, MapPin } from 'lucide-react';
 
 export default function Footer() {
     return (
-        <footer className="bg-text-primary text-white pt-24 pb-32 md:pb-24 relative overflow-hidden">
+        <footer className="bg-text-primary text-white pt-24 pb-48 md:pb-40 relative overflow-hidden">
             {/* Background decoration */}
             <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-gray-700 to-transparent"></div>
 

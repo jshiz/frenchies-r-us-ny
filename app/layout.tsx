@@ -94,6 +94,10 @@ export const metadata: Metadata = {
   },
 };
 
+import Navbar from '@/components/Navbar';
+import Footer from '@/components/Footer';
+import FrenchieRadio from '@/components/FrenchieRadio';
+
 export default function RootLayout({
   children,
 }: {
@@ -111,7 +115,12 @@ export default function RootLayout({
         />
       </head>
       <body className="font-sans min-h-screen flex flex-col">
-        {children}
+        <Navbar />
+        <div className="flex-grow">
+          {children}
+        </div>
+        <Footer />
+        <FrenchieRadio />
       </body>
     </html>
   );
