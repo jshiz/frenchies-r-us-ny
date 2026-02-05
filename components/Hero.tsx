@@ -46,7 +46,7 @@ export default function Hero() {
                             muted
                             loop
                             playsInline
-                            className="w-full h-full object-cover md:object-top"
+                            className="w-full h-full object-cover md:object-[center_20%]"
                         >
                             <source src={src} type="video/mp4" />
                         </video>
