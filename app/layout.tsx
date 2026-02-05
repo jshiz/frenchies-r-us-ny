@@ -71,10 +71,19 @@ export const metadata: Metadata = {
       'max-snippet': -1,
     },
   },
+  appleWebApp: {
+    title: 'Frenchies R Us NY',
+    statusBarStyle: 'default',
+    capable: true,
+  },
   icons: {
-    icon: '/favicon.ico',
-    shortcut: '/favicon-96x96.png',
-    apple: '/apple-touch-icon.png',
+    icon: [
+      { url: '/favicon-96x96.png', sizes: '96x96', type: 'image/png' },
+      { url: '/favicon.ico', sizes: 'any' },
+    ],
+    apple: [
+      { url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' },
+    ],
     other: [
       {
         rel: 'icon',
