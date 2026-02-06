@@ -13,7 +13,7 @@ export default function About() {
                             style={{ backfaceVisibility: 'hidden', WebkitMaskImage: '-webkit-radial-gradient(white, black)' }}
                         >
                             <img
-                                src="/images/kbriggs.jpg?v=2"
+                                src="/images/kbriggs.jpg"
                                 alt="Kevin D Briggs Jr - The King of Frenchies"
                                 className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-all duration-1000"
                             />
