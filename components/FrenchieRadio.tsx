@@ -139,56 +139,58 @@ export default function FrenchieRadio() {
                         </div>
                     </div>
 
-                    {/* Track Info & Equalizer */}
-                    <div className="flex-1 min-w-0 flex flex-col justify-center min-h-[64px]">
-                        <div className="flex items-center gap-2 mb-0.5">
-                            <span className="flex h-1.5 w-1.5 rounded-full bg-green-primary animate-pulse"></span>
-                            <p className="text-[9px] text-green-primary font-black uppercase tracking-widest">Frenchies R Us Radio</p>
-                        </div>
-                        <h4 className="font-serif text-lg md:text-xl font-black text-white italic leading-tight truncate">
-                            {PLAYLIST[trackIndex].title}
-                        </h4>
-
-                        {/* Improved Symmetrical Equalizer */}
-                        {isPlaying ? (
-                            <div className="mt-1 flex items-center gap-2">
-                                <Equalizer />
+                    {/* Track Info & Controls Group */}
+                    <div className="flex-1 min-w-0 flex flex-col gap-3">
+                        {/* Branding & Equalizer Row */}
+                        <div className="flex items-center justify-between gap-4">
+                            <div className="flex items-center gap-1.5 min-w-0">
+                                <span className="flex-shrink-0 h-1.5 w-1.5 rounded-full bg-green-primary animate-pulse"></span>
+                                <p className="text-[8px] md:text-[9px] text-green-primary font-black uppercase tracking-widest truncate">Frenchies R Us Radio</p>
                             </div>
-                        ) : (
-                            <p className="text-gray-500 text-[10px] font-bold uppercase tracking-widest">Paused</p>
-                        )}
+                            {isPlaying && <div className="flex-shrink-0 scale-75 origin-right"><Equalizer /></div>}
+                        </div>
+
+                        {/* Large Title Row */}
+                        <div className="min-w-0">
+                            <h4 className="font-serif text-xl md:text-2xl font-black text-white italic leading-none truncate pr-4">
+                                {PLAYLIST[trackIndex].title}
+                            </h4>
+                        </div>
+
+                        {/* Controls Row */}
+                        <div className="flex items-center gap-4">
+                            <div className="flex items-center gap-3">
+                                <button
+                                    onClick={prevTrack}
+                                    className="p-1 text-gray-500 hover:text-white transition-all active:scale-90"
+                                >
+                                    <SkipBack size={18} fill="currentColor" />
+                                </button>
+
+                                <button
+                                    onClick={togglePlay}
+                                    className="w-10 h-10 bg-white text-text-primary rounded-full flex items-center justify-center hover:bg-green-primary hover:text-white transition-all duration-300 shadow-xl active:scale-95"
+                                >
+                                    {isPlaying ? <Pause size={20} fill="currentColor" /> : <Play size={20} fill="currentColor" className="ml-0.5" />}
+                                </button>
+
+                                <button
+                                    onClick={nextTrack}
+                                    className="p-1 text-gray-500 hover:text-white transition-all active:scale-90"
+                                >
+                                    <SkipForward size={18} fill="currentColor" />
+                                </button>
+                            </div>
+                        </div>
                     </div>
 
-                    {/* Controls Component - Condensed */}
-                    <div className="flex items-center gap-2 md:gap-4">
-                        <button
-                            onClick={prevTrack}
-                            className="p-2 text-gray-500 hover:text-white transition-all active:scale-90"
-                        >
-                            <SkipBack size={20} fill="currentColor" />
-                        </button>
-
-                        <button
-                            onClick={togglePlay}
-                            className="w-12 h-12 bg-white text-text-primary rounded-full flex items-center justify-center hover:bg-green-primary hover:text-white transition-all duration-300 shadow-xl active:scale-95"
-                        >
-                            {isPlaying ? <Pause size={22} fill="currentColor" /> : <Play size={22} fill="currentColor" className="ml-1" />}
-                        </button>
-
-                        <button
-                            onClick={nextTrack}
-                            className="p-2 text-gray-500 hover:text-white transition-all active:scale-90"
-                        >
-                            <SkipForward size={20} fill="currentColor" />
-                        </button>
-
-                        <button
-                            onClick={() => setIsExpanded(false)}
-                            className="ml-2 p-2 text-gray-500 hover:text-white rounded-full transition-all group/close"
-                        >
-                            <ChevronDown size={22} className="group-hover:translate-y-0.5 transition-transform" />
-                        </button>
-                    </div>
+                    {/* Minimize Button - Fixed Position */}
+                    <button
+                        onClick={() => setIsExpanded(false)}
+                        className="p-2 text-gray-500 hover:text-white rounded-full transition-all group/close"
+                    >
+                        <ChevronDown size={20} className="group-hover:translate-y-0.5 transition-transform" />
+                    </button>
                 </div>
             </div>
         </>
