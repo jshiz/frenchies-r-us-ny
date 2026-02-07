@@ -86,7 +86,7 @@ export default function FrenchieRadio() {
                         <img
                             src={PLAYLIST[trackIndex].art}
                             alt="Art"
-                            className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ${isPlaying ? 'opacity-40' : 'opacity-20'}`}
+                            className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ${isPlaying ? 'opacity-40 animate-spin-slow' : 'opacity-20'}`}
                         />
                         {isPlaying ? (
                             <div className="flex gap-0.5 items-end h-3 relative z-10">
@@ -128,7 +128,7 @@ export default function FrenchieRadio() {
                             <img
                                 src={PLAYLIST[trackIndex].art}
                                 alt={PLAYLIST[trackIndex].title}
-                                className={`absolute inset-0 w-full h-full object-cover transition-transform duration-1000 ${isPlaying ? 'scale-110 opacity-80' : 'scale-100'}`}
+                                className={`absolute inset-0 w-full h-full object-cover transition-transform duration-1000 ${isPlaying ? 'scale-110 opacity-80 animate-spin-slow' : 'scale-100'}`}
                             />
                             {isPlaying && (
                                 <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
