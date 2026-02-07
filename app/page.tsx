@@ -7,6 +7,7 @@ import Gallery from '@/components/Gallery';
 import HealthGuarantee from '@/components/HealthGuarantee';
 import ExtendedFeatures from '@/components/ExtendedFeatures';
 import DeliverySection from '@/components/DeliverySection';
+import StudGrid from '@/components/StudGrid';
 import AreasServed from '@/components/AreasServed';
 import Contact from '@/components/Contact';
 
@@ -16,6 +17,7 @@ export default function Home() {
       <Hero />
       <About />
       <RoyalLifestyle />
+      <StudGrid />
       <PuppyGrid />
       <DNAEducation />
       <Gallery />

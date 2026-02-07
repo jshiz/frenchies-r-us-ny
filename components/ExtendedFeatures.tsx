@@ -85,7 +85,7 @@ export default function ExtendedFeatures() {
                                 </div>
                                 <span className="font-marker text-green-primary text-xl tracking-widest uppercase">Member Spotlight</span>
                             </div>
-                            <h3 className="font-serif text-3xl md:text-5xl font-black text-text-primary mb-6 leading-none tracking-tighter uppercase italic">From our HQ <br /> to your home.</h3>
+                            <h3 className="font-serif text-3xl md:text-5xl font-black text-text-primary mb-6 leading-none tracking-tighter uppercase italic">From our headquarters <br /> to your home.</h3>
                             <p className="text-text-secondary text-lg leading-relaxed max-w-sm italic">
                                 "Kevin helped us choose Kingston specifically based on his calm temperament for our kids. Best decision we ever made." — The Smith Family, Manhattan
                             </p>

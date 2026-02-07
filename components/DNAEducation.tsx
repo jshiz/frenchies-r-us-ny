@@ -2,13 +2,6 @@
 
 import { Microscope, Beaker, ShieldCheck, Zap } from 'lucide-react';
 
-const GENETICS = [
-    { term: "Big Rope", desc: "The heavy, iconic nose wrinkle that defines elite structure.", category: "Structure" },
-    { term: "Visual Fluffy", desc: "The rare L1/L4 gene offering a plush, teddy-bear coat.", category: "Hype" },
-    { term: "New Shade Isabella", desc: "The pinnacle of DNA—combining blue and chocolate dilution.", category: "Exotic" },
-    { term: "Velvet", desc: "A luxury short-plush texture that feels like royalty.", category: "Exotic" },
-];
-
 export default function DNAEducation() {
     return (
         <section id="dna" className="py-24 bg-text-primary text-white relative overflow-hidden">
@@ -30,20 +23,6 @@ export default function DNAEducation() {
                         <p className="text-gray-400 text-lg md:text-xl leading-relaxed max-w-xl">
                             We aren't just breeders; we're genetic architects. Every Royal Frenchie is the result of precision matching, ensuring superior structure, health, and "Nuclear" color patterns.
                         </p>
-
-                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-8">
-                            {GENETICS.map((g, i) => (
-                                <div key={i} className="group p-6 bg-white/5 border border-white/10 rounded-2xl hover:border-green-primary/50 transition-all cursor-default">
-                                    <div className="flex items-center gap-3 mb-3">
-                                        <span className="text-xs font-bold uppercase tracking-tighter px-2 py-1 bg-green-primary/20 text-green-light rounded">
-                                            {g.category}
-                                        </span>
-                                    </div>
-                                    <h3 className="font-serif text-xl font-bold mb-2 group-hover:text-green-light transition-colors">{g.term}</h3>
-                                    <p className="text-sm text-gray-500 leading-relaxed">{g.desc}</p>
-                                </div>
-                            ))}
-                        </div>
                     </div>
 
                     <div className="relative">

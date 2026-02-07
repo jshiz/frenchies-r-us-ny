@@ -44,19 +44,24 @@ export default function Navbar() {
                     </div>
                 </Link>
 
-                {/* Desktop Nav */}
                 <div className="hidden md:flex items-center gap-8">
-                    {['The Man', 'The Pups', 'The Lab', 'The Contract'].map((item) => (
-                        <Link
-                            key={item}
-                            href={`${isHome ? '' : '/'}#${item.toLowerCase().replace(' ', '-').replace('the-', '') === 'man' ? 'about' :
-                                item.toLowerCase().replace(' ', '-').replace('the-', '') === 'pups' ? 'puppies' :
-                                    item.toLowerCase().replace(' ', '-').replace('the-', '') === 'lab' ? 'dna' : 'trust'}`}
-                            className={`text-sm font-bold uppercase tracking-wider hover:text-green-primary transition-colors ${isSolid ? 'text-text-primary' : 'text-white drop-shadow-sm'}`}
-                        >
-                            {item}
-                        </Link>
-                    ))}
+                    {['The Man', 'The Studs', 'The Pups', 'The Lab', 'The Contract'].map((item) => {
+                        const slug = item.toLowerCase().replace(' ', '-').replace('the-', '');
+                        const targetId = slug === 'man' ? 'about' :
+                            slug === 'pups' ? 'puppies' :
+                                slug === 'lab' ? 'dna' :
+                                    slug === 'contract' ? 'trust' : 'studs';
+
+                        return (
+                            <Link
+                                key={item}
+                                href={`${isHome ? '' : '/'}#${targetId}`}
+                                className={`text-sm font-bold uppercase tracking-wider hover:text-green-primary transition-colors ${isSolid ? 'text-text-primary' : 'text-white drop-shadow-sm'}`}
+                            >
+                                {item}
+                            </Link>
+                        );
+                    })}
 
                     <div className="h-6 w-px bg-gray-300/50"></div>
 
@@ -86,21 +91,26 @@ export default function Navbar() {
                 </button>
             </div>
 
-            {/* Mobile Menu */}
             {isOpen && (
                 <div className="md:hidden absolute top-full left-0 w-full bg-white border-t border-gray-100 shadow-2xl py-12 flex flex-col items-center gap-10 animate-fade-in-up">
-                    {['The Man', 'The Pups', 'The Lab', 'The Contract'].map((item) => (
-                        <Link
-                            key={item}
-                            href={`${isHome ? '' : '/'}#${item.toLowerCase().replace(' ', '-').replace('the-', '') === 'man' ? 'about' :
-                                item.toLowerCase().replace(' ', '-').replace('the-', '') === 'pups' ? 'puppies' :
-                                    item.toLowerCase().replace(' ', '-').replace('the-', '') === 'lab' ? 'dna' : 'trust'}`}
-                            className="text-2xl font-serif font-black text-text-primary tracking-tight hover:text-green-primary transition-colors"
-                            onClick={() => setIsOpen(false)}
-                        >
-                            {item}
-                        </Link>
-                    ))}
+                    {['The Man', 'The Studs', 'The Pups', 'The Lab', 'The Contract'].map((item) => {
+                        const slug = item.toLowerCase().replace(' ', '-').replace('the-', '');
+                        const targetId = slug === 'man' ? 'about' :
+                            slug === 'pups' ? 'puppies' :
+                                slug === 'lab' ? 'dna' :
+                                    slug === 'contract' ? 'trust' : 'studs';
+
+                        return (
+                            <Link
+                                key={item}
+                                href={`${isHome ? '' : '/'}#${targetId}`}
+                                className="text-2xl font-serif font-black text-text-primary tracking-tight hover:text-green-primary transition-colors"
+                                onClick={() => setIsOpen(false)}
+                            >
+                                {item}
+                            </Link>
+                        );
+                    })}
 
                     <div className="flex gap-8 mt-4">
                         <Link href="https://instagram.com/frenchiesrusny" target="_blank" className="bg-gray-100 p-4 rounded-full text-text-primary hover:bg-green-primary hover:text-white transition-all">

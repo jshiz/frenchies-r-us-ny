@@ -40,25 +40,57 @@ export default function RoyalLifestyle() {
                     ))}
                 </div>
 
-                {/* Action Shot Gallery (Small) */}
-                <div className="mt-20 grid grid-cols-1 md:grid-cols-3 gap-6">
-                    <div
-                        className="h-64 rounded-3xl overflow-hidden shadow-xl transform -rotate-1 hover:rotate-0 transition-all duration-500 isolate transform-gpu"
-                        style={{ backfaceVisibility: 'hidden', WebkitMaskImage: '-webkit-radial-gradient(white, black)' }}
-                    >
-                        <img src="/images/frenchie-pup-6.jpg" className="w-full h-full object-cover" alt="Happy Frenchie" />
+                {/* The Legacy Gallery */}
+                <div className="mt-20 grid grid-cols-1 md:grid-cols-3 gap-12 items-start">
+                    {/* Left offspring: Vengeance */}
+                    <div className="flex flex-col items-center">
+                        <div
+                            className="w-full aspect-square rounded-3xl overflow-hidden shadow-xl transform rotate-0 md:-rotate-2 hover:rotate-0 transition-all duration-500 isolate transform-gpu border-4 border-white"
+                            style={{ backfaceVisibility: 'hidden', WebkitMaskImage: '-webkit-radial-gradient(white, black)' }}
+                        >
+                            <img src="/images/vengence.jpg" className="w-full h-full object-cover" alt="Vengeance - Offspring of Moe Chocolate" />
+                        </div>
+                        <div className="mt-6 text-center px-4">
+                            <h4 className="font-serif text-2xl font-black uppercase italic tracking-tighter text-text-primary">Vengeance</h4>
+                            <p className="text-xs font-bold text-green-primary uppercase tracking-[0.2em] mb-2">The Prodigy</p>
+                            <p className="text-[11px] font-medium text-text-secondary leading-relaxed max-w-[240px]">
+                                Carrying the torch. Vengeance embodies the extreme structure and "Nuclear" standard passed down from Moe.
+                            </p>
+                        </div>
                     </div>
-                    <div
-                        className="h-64 rounded-3xl overflow-hidden shadow-xl translate-y-4 hover:translate-y-0 transition-all duration-500 isolate transform-gpu"
-                        style={{ backfaceVisibility: 'hidden', WebkitMaskImage: '-webkit-radial-gradient(white, black)' }}
-                    >
-                        <img src="/images/frenchie-pup-15.jpg" className="w-full h-full object-cover" alt="Royal Treatment" />
+
+                    {/* Center: The Legend Moe Chocolate */}
+                    <div className="flex flex-col items-center">
+                        <div
+                            className="w-full aspect-square rounded-3xl overflow-hidden shadow-2xl transform scale-110 z-20 border-4 border-green-primary/20 transition-all duration-500 isolate transform-gpu"
+                            style={{ backfaceVisibility: 'hidden', WebkitMaskImage: '-webkit-radial-gradient(white, black)' }}
+                        >
+                            <img src="/images/moe-chocolate.jpg" className="w-full h-full object-cover" alt="Moe Chocolate - The Legend" />
+                        </div>
+                        <div className="mt-10 text-center px-4">
+                            <h4 className="font-serif text-3xl font-black uppercase italic tracking-tighter text-text-primary drop-shadow-sm">Moe Chocolate</h4>
+                            <p className="text-sm font-black text-green-primary uppercase tracking-[0.3em] mb-3">The Founding Legend</p>
+                            <p className="text-xs font-bold text-text-secondary leading-relaxed italic max-w-[280px]">
+                                "He didn't just meet the bar, he became it." The foundation of the Frenchies R Us NY bloodline. A legacy that echoes through every generation.
+                            </p>
+                        </div>
                     </div>
-                    <div
-                        className="h-64 rounded-3xl overflow-hidden shadow-xl transform rotate-1 hover:rotate-0 transition-all duration-500 isolate transform-gpu"
-                        style={{ backfaceVisibility: 'hidden', WebkitMaskImage: '-webkit-radial-gradient(white, black)' }}
-                    >
-                        <img src="/images/frenchie-pup-22.jpg" className="w-full h-full object-cover" alt="Adventure Pups" />
+
+                    {/* Right offspring: Pape */}
+                    <div className="flex flex-col items-center">
+                        <div
+                            className="w-full aspect-square rounded-3xl overflow-hidden shadow-xl transform rotate-0 md:rotate-2 hover:rotate-0 transition-all duration-500 isolate transform-gpu border-4 border-white"
+                            style={{ backfaceVisibility: 'hidden', WebkitMaskImage: '-webkit-radial-gradient(white, black)' }}
+                        >
+                            <img src="/images/pape.jpg" className="w-full h-full object-cover" alt="Pape - Offspring of Moe Chocolate" />
+                        </div>
+                        <div className="mt-6 text-center px-4">
+                            <h4 className="font-serif text-2xl font-black uppercase italic tracking-tighter text-text-primary">Pape</h4>
+                            <p className="text-xs font-bold text-green-primary uppercase tracking-[0.2em] mb-2">The Successor</p>
+                            <p className="text-[11px] font-medium text-text-secondary leading-relaxed max-w-[240px]">
+                                Excellence in every fiber. Pape continues the world-class genetic lineage that defines our family headquarters.
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>

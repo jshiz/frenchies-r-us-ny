@@ -20,7 +20,7 @@ export default function Contact() {
 
                             <div className="space-y-10 w-full max-w-md">
                                 {[
-                                    { icon: Phone, title: "Call or Text", value: "(518) 227-7773", href: "tel:5182277773" },
+                                    { icon: Phone, title: "Call or Text", value: "(914) 325-7621", href: "tel:9143257621" },
                                     { icon: Mail, title: "Email Us", value: "info@frenchiesrusny.com", href: "mailto:info@frenchiesrusny.com" },
                                     { icon: MapPin, title: "Visit Us", value: "Schenectady, New York", href: null }
                                 ].map((item, i) => (

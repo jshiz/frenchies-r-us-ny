@@ -6,7 +6,7 @@ export default function About() {
             <div className="max-w-7xl mx-auto px-6">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
                     {/* Image Side */}
-                    <div className="relative h-[600px] rotate-1 hover:rotate-0 transition-all duration-700 group">
+                    <div className="relative h-[600px] rotate-0 md:rotate-1 hover:rotate-0 transition-all duration-700 group">
                         {/* Image Container with Masking */}
                         <div
                             className="absolute inset-0 rounded-[2.5rem] overflow-hidden shadow-2xl bg-gray-100 isolate"
@@ -22,7 +22,7 @@ export default function About() {
 
                         {/* Floating Badges - Outside the mask for maximum sharpness */}
                         <div className="absolute top-8 left-8 z-20 transition-transform duration-500 group-hover:translate-x-2 group-hover:-translate-y-2">
-                            <div className="bg-white/95 backdrop-blur-md text-text-primary px-5 py-3 rounded-2xl shadow-[0_20px_40px_rgba(0,0,0,0.2)] transform -rotate-3 border-2 border-green-primary antialiased">
+                            <div className="bg-white/95 backdrop-blur-md text-text-primary px-5 py-3 rounded-2xl shadow-[0_20px_40px_rgba(0,0,0,0.2)] transform rotate-0 md:-rotate-3 border-2 border-green-primary antialiased">
                                 <span className="font-marker text-xs uppercase tracking-[0.2em] block text-green-primary mb-1">Top Tier</span>
                                 <span className="font-serif font-black text-xl leading-none">Empire Breeder</span>
                             </div>
@@ -52,7 +52,7 @@ export default function About() {
                                 Founded in the heart of the Capital Region, Frenchies R Us NY was born from Kevin D Briggs Jr's obsession with perfecting the breed. Disappointed by the lack of structural integrity and health standards in the exotic market, he set out to build a lineage that didn't just look royal—but lived like it.
                             </p>
                             <p>
-                                Every breeding at our HQ is a scientific endeavor. We prioritize the "Triple Crown": **Perfect Structure**, **Elite Genetics**, and **Bulletproof Health**. When you join our family, you aren't just buying a pet; you're inheriting a legacy of excellence that Kevin has cultivated over years.
+                                Every breeding at our headquarters is a scientific endeavor. We prioritize the "Triple Crown": **Perfect Structure**, **Elite Genetics**, and **Bulletproof Health**. When you join our family, you aren't just buying a pet; you're inheriting a legacy of excellence that Kevin has cultivated over years.
                             </p>
                         </div>
 

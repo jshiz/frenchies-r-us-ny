@@ -63,7 +63,7 @@ export default function Footer() {
                                 <div className="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center group-hover:bg-green-primary transition-colors">
                                     <Phone size={18} className="text-white" />
                                 </div>
-                                <span className="group-hover:text-white transition-colors">(518) 227-7773</span>
+                                <span className="group-hover:text-white transition-colors">(914) 325-7621</span>
                             </li>
                             <li className="flex items-center gap-4 group cursor-pointer">
                                 <div className="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center group-hover:bg-green-primary transition-colors">

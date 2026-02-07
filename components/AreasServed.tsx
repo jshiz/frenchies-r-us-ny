@@ -51,7 +51,7 @@ export default function AreasServed() {
                             <div className="absolute inset-0 opacity-20 bg-[url('https://images.unsplash.com/photo-1524660988544-2fd7822d0b3d?auto=format&fit=crop&q=80&w=1000')] bg-cover grayscale group-hover:scale-110 transition-transform duration-700"></div>
 
                             <div className="relative z-10 space-y-6">
-                                <div className="w-16 h-16 md:w-20 md:h-20 bg-green-primary rounded-2xl md:rounded-3xl flex items-center justify-center mx-auto shadow-lg shadow-green-primary/40 transform rotate-12 group-hover:rotate-0 transition-transform">
+                                <div className="w-16 h-16 md:w-20 md:h-20 bg-green-primary rounded-2xl md:rounded-3xl flex items-center justify-center mx-auto shadow-lg shadow-green-primary/40 transform rotate-0 md:rotate-12 group-hover:rotate-0 transition-transform">
                                     <Navigation size={32} className="fill-white md:w-10 md:h-10" />
                                 </div>
                                 <h3 className="font-marker text-3xl md:text-5xl mt-6">NY Standard.</h3>

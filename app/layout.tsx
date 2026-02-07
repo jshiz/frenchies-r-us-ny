@@ -28,7 +28,7 @@ export const metadata: Metadata = {
     default: 'Frenchies R Us NY | Premium French Bulldog Breeder | Schenectady, Albany, Troy',
     template: '%s | Frenchies R Us NY'
   },
-  description: 'Premium French Bulldog breeder in New York Capital Region. Exotic colors, DNA verified, superior structure. Blue, Lilac, Merle puppies. Schenectady, Albany, Troy. Health guaranteed.',
+  description: 'Elite French Bulldog genetics at Frenchies R Us NY. A showcase of world-class structure, rare DNA, and legendary bloodlines in New York Capital Region. Schenectady, Albany, Troy.',
   keywords: generateKeywords(['trending', 'colors', 'location', 'structure']),
   authors: [{ name: 'Kevin D Briggs Jr' }],
   creator: 'Frenchies R Us NY',

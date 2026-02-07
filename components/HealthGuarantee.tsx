@@ -21,7 +21,7 @@ const GUARANTEES = [
     {
         icon: <FileText className="text-green-primary" />,
         title: "DNA Verification",
-        desc: "UC Davis or Animal Genetics verified certificates provided with every 'Exotic' or 'New Shade' listing."
+        desc: "Animal Genetics verified certificates provided with every 'Exotic' or 'New Shade' listing."
     },
 ];
 
@@ -35,7 +35,7 @@ export default function HealthGuarantee() {
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
 
                     <div className="order-2 lg:order-1">
-                        <div className="bg-white p-8 md:p-12 rounded-[3.5rem] shadow-2xl border-4 border-white transform -rotate-1 relative group hover:rotate-0 transition-transform duration-500">
+                        <div className="bg-white p-8 md:p-12 rounded-[3.5rem] shadow-2xl border-4 border-white transform rotate-0 md:-rotate-1 relative group hover:rotate-0 transition-transform duration-500">
                             <div className="absolute -top-6 -right-6 bg-green-primary text-white p-4 rounded-full shadow-lg transform rotate-12 group-hover:scale-110 transition-transform">
                                 <ShieldCheck size={40} />
                             </div>

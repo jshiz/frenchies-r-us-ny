@@ -1,7 +1,6 @@
 import { MetadataRoute } from 'next';
 
 export const dynamic = 'force-static';
-import { getAllPuppySlugs, getAllColorSlugs } from '@/lib/puppies';
 
 export default function sitemap(): MetadataRoute.Sitemap {
     const baseUrl = 'https://frenchiesrusny.com';
@@ -28,23 +27,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
         },
     ];
 
-    // Dynamic puppy pages
-    const puppySlugs = getAllPuppySlugs();
-    const puppyPages = puppySlugs.map((slug) => ({
-        url: `${baseUrl}/puppies/${slug}`,
-        lastModified: new Date(),
-        changeFrequency: 'weekly' as const,
-        priority: 0.8,
-    }));
-
-    // Dynamic color pages
-    const colorSlugs = getAllColorSlugs();
-    const colorPages = colorSlugs.map((slug) => ({
-        url: `${baseUrl}/colors/${slug}`,
-        lastModified: new Date(),
-        changeFrequency: 'weekly' as const,
-        priority: 0.9,
-    }));
-
-    return [...staticPages, ...puppyPages, ...colorPages];
+    return staticPages;
 }
