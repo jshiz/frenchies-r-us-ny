@@ -9,10 +9,10 @@ const PLAYLIST = [
     { id: 3, title: "Puppy Zoomies", artist: "Frenchie Royal", src: "/music/Puppy Zoomies.mp3", art: "/music/Puppy Zoomies.jpeg" },
     { id: 4, title: "Royal Bloodline", artist: "Frenchie Royal", src: "/music/Royal Bloodline.mp3", art: "/music/Royal Bloodline.jpeg" },
     { id: 5, title: "Not a Kennel", artist: "Frenchie Royal", src: "/music/Not a Kennel.mp3", art: "/music/Not a Kennel.jpeg" },
-    { id: 6, title: "The Anthem 2", artist: "Frenchie Royal", src: "/music/The Anthem 2.mp3", art: "/music/The Anthem 2.jpeg" },
-    { id: 7, title: "Exotic Colors 2", artist: "Frenchie Royal", src: "/music/Exotic Colors 2.mp3", art: "/music/Exotic Colors 2.jpeg" },
-    { id: 8, title: "Royal Bloodline 2", artist: "Frenchie Royal", src: "/music/Royal Bloodline 2.mp3", art: "/music/Royal Bloodline 2.jpeg" },
-    { id: 9, title: "Not a Kennel 2", artist: "Frenchie Royal", src: "/music/Not a Kennel 2.mp3", art: "/music/Not a Kennel 2.jpeg" }
+    { id: 6, title: "Champion’s Creed", artist: "Frenchie Royal", src: "/music/Champion’s Creed.mp3", art: "/music/Champion’s Creed.jpeg" },
+    { id: 7, title: "Vivid Pedigree", artist: "Frenchie Royal", src: "/music/Vivid Pedigree.mp3", art: "/music/Vivid Pedigree.jpeg" },
+    { id: 8, title: "Noble Genetics", artist: "Frenchie Royal", src: "/music/Noble Genetics.mp3", art: "/music/Noble Genetics.jpeg" },
+    { id: 9, title: "Living Room Legacy", artist: "Frenchie Royal", src: "/music/Living Room Legacy.mp3", art: "/music/Living Room Legacy.jpeg" }
 ];
 
 // Symmetrical Audio Bar Animation
@@ -155,7 +155,7 @@ export default function FrenchieRadio() {
                         <span className="text-[9px] font-black uppercase tracking-widest text-green-primary truncate w-full text-left">
                             {isPlaying ? 'Now Playing' : 'Elite Vibes'}
                         </span>
-                        <span className="text-sm font-serif font-black italic text-white truncate w-full text-left font-serif">
+                        <span className={`font-serif font-black italic text-white w-full text-left transition-all duration-300 ${(isPlaying ? PLAYLIST[trackIndex].title : "Play Radio").length > 18 ? 'text-[11px]' : 'text-sm'}`}>
                             {isPlaying ? PLAYLIST[trackIndex].title : "Play Radio"}
                         </span>
                     </div>
@@ -176,7 +176,7 @@ export default function FrenchieRadio() {
                             </div>
 
                             <div className="min-w-0">
-                                <h4 className="font-serif text-2xl md:text-4xl font-black text-white italic leading-tight truncate pr-4">
+                                <h4 className={`font-serif font-black text-white italic leading-tight transition-all duration-500 ${PLAYLIST[trackIndex].title.length > 15 ? 'text-xl md:text-3xl' : 'text-2xl md:text-4xl'}`}>
                                     {PLAYLIST[trackIndex].title}
                                 </h4>
                                 <p className="text-gray-300 text-[10px] md:text-xs font-bold uppercase tracking-widest mt-1">Bred for Perfection</p>
