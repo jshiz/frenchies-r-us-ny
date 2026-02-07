@@ -24,12 +24,7 @@ export default function About() {
                             </div>
                         </div>
 
-                        {/* Secondary Brand Badge */}
-                        <div className="absolute bottom-4 right-4 z-20 transition-all duration-500 group-hover:-translate-x-2 group-hover:translate-y-2 hidden md:block">
-                            <div className="bg-green-primary text-white p-4 rounded-full shadow-2xl transform rotate-12 border-4 border-white/30">
-                                <span className="font-marker text-lg tracking-widest uppercase italic">DNA Certified</span>
-                            </div>
-                        </div>
+
                     </div>
 
                     {/* Content Side */}
