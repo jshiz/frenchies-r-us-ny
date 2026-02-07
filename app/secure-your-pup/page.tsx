@@ -83,7 +83,7 @@ export default function SecureYourPup() {
                             </div>
 
                             <Link
-                                href="https://www.paypal.me/kevindbriggsjr"
+                                href="https://www.paypal.com/ncp/payment/7YUAP4E5E3JXL"
                                 target="_blank"
                                 className="w-full max-w-sm bg-white text-text-primary py-6 rounded-[2rem] font-black text-xl md:text-2xl uppercase tracking-[0.1em] hover:bg-green-primary hover:text-white transition-all shadow-[0_20px_40px_rgba(0,0,0,0.3)] flex items-center justify-center gap-4 group/btn"
                             >
