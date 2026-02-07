@@ -47,7 +47,7 @@ export const metadata: Metadata = {
     siteName: 'Frenchies R Us NY',
     images: [
       {
-        url: '/socialsharing.jpg',
+        url: '/social-preview-v2.jpg',
         width: 1200,
         height: 630,
         alt: 'Frenchies R Us NY - Premium French Bulldog Breeder'
@@ -58,7 +58,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Frenchies R Us NY | Premium French Bulldog Breeder',
     description: 'Exotic French Bulldog puppies. DNA verified, health tested, family raised.',
-    images: ['/socialsharing.jpg'],
+    images: ['/social-preview-v2.jpg'],
   },
   robots: {
     index: true,
