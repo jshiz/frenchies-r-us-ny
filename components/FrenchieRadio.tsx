@@ -113,7 +113,7 @@ export default function FrenchieRadio() {
             {!isExpanded && (
                 <button
                     onClick={() => setIsExpanded(true)}
-                    className={`fixed bottom-6 right-6 z-[60] group flex items-center gap-3 bg-text-primary/90 backdrop-blur-xl border border-white/20 p-2 pr-6 rounded-full shadow-2xl hover:bg-white/30 transition-all duration-500 cursor-pointer animate-fade-in-up w-[250px] ${isPlaying ? 'animate-bounce-slow' : ''}`}
+                    className={`fixed bottom-6 right-6 z-[60] group flex items-center gap-3 bg-text-primary/90 backdrop-blur-xl border border-white/20 p-2 pr-6 rounded-full shadow-2xl hover:bg-text-primary hover:border-green-primary/50 transition-all duration-500 cursor-pointer animate-fade-in-up w-[250px] ${isPlaying ? 'animate-bounce-slow' : ''}`}
                 >
                     {/* Art Container */}
                     <div
