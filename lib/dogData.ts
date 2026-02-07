@@ -44,44 +44,44 @@ export const STUDS: Dog[] = [
 export const PUPPIES: Dog[] = [
     {
         id: 1,
-        name: "Fluffy",
-        details: ["Lilac Fluffy"],
+        name: "Blue & Tan / Fluffy / Male",
+        details: ["Visual Fluffy", "World-Class Structure"],
         gender: "Male",
-        img: "/images/puppies/fluffy-1.jpg"
+        img: "/images/puppies/blue-and-tan-fluffy-male.jpg"
     },
     {
         id: 2,
-        name: "Husky",
-        details: ["Husky / Blue"],
+        name: "Husky / Isabella / Female",
+        details: ["Rare Isabella DNA", "Future Foundation"],
         gender: "Female",
-        img: "/images/puppies/husky-1.jpg"
+        img: "/images/puppies/husky-isabella-female.jpg"
     },
     {
         id: 3,
-        name: "Koi 1",
-        details: ["Koi / Merle"],
+        name: "Say Less / Koi / Male",
+        details: ["Koi Merle", "Compact Frame"],
         gender: "Male",
-        img: "/images/puppies/koi-1.jpg"
+        img: "/images/puppies/say-less-koi-male.jpg"
     },
     {
         id: 4,
-        name: "Koi 2",
-        details: ["Koi / Merle"],
-        gender: "Female",
-        img: "/images/puppies/koi-2.jpg"
+        name: "Say Somethin / Koi / Male",
+        details: ["Koi Merle", "Heavy Bone"],
+        gender: "Male",
+        img: "/images/puppies/say-somethin-koi-male.jpg"
     },
     {
         id: 5,
-        name: "Rojo",
-        details: ["Rojo / Chocolate"],
+        name: "Rojo / Rojo / Male",
+        details: ["Pure Rojo DNA", "Investment Quality"],
         gender: "Male",
-        img: "/images/puppies/rojo-1.jpg"
+        img: "/images/puppies/rojo-male.jpg"
     },
     {
         id: 6,
-        name: "Platinum",
-        details: ["Platinum Cream"],
-        gender: "Female",
-        img: "/images/frenchie-pup-21.jpg"
+        name: "Vengeance / Rojo / Male",
+        details: ["Deep Rojo Tone", "Elite Bloodline"],
+        gender: "Male",
+        img: "/images/puppies/vengeance-rojo-male.jpg"
     }
 ];
