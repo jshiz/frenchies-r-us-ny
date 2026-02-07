@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useRef, useEffect } from 'react';
-import { Play, Pause, SkipBack, SkipForward, Music2, ChevronDown, ChevronLeft } from 'lucide-react';
+import { Play, Pause, SkipBack, SkipForward, Music2, ChevronDown, ChevronLeft, X } from 'lucide-react';
 
 const PLAYLIST = [
     { id: 1, title: "The Anthem", artist: "Frenchie Royal", src: "/music/The Anthem.mp3", art: "/music/The Anthem.jpeg" },
@@ -91,7 +91,7 @@ export default function FrenchieRadio() {
 
             {/* Collapsed Widget - Ultra Condensed */}
             {!isExpanded && (
-                <div className={`fixed bottom-6 right-6 z-[60] flex items-center gap-2 bg-text-primary/95 backdrop-blur-xl border border-white/10 p-1.5 rounded-full shadow-[0_20px_50px_rgba(0,0,0,0.4)] transition-all duration-500 hover:border-green-primary/30 ${isPlaying ? 'animate-bounce-slow' : ''}`}>
+                <div className={`fixed bottom-6 right-6 z-[60] flex items-center gap-2 bg-text-primary/95 backdrop-blur-xl border-t border-l border-white/20 p-1.5 rounded-full shadow-[6px_6px_20px_rgba(0,0,0,0.6),inset_-2px_-2px_5px_rgba(0,0,0,0.5)] transition-all duration-500 hover:border-green-primary/30 ${isPlaying ? 'animate-bounce-slow' : ''}`}>
                     {/* Pop out arrow - Left side */}
                     <button
                         onClick={() => setIsExpanded(true)}
@@ -133,7 +133,7 @@ export default function FrenchieRadio() {
 
             {/* Expanded Player - Fixed Size */}
             <div className={`fixed bottom-0 right-0 z-50 p-4 md:p-8 transition-all duration-700 ease-in-out pointer-events-none ${isExpanded ? 'translate-y-0 opacity-100 scale-100' : 'translate-y-20 opacity-0 scale-95 invisible'}`}>
-                <div className={`w-[90vw] md:w-[540px] bg-text-primary/90 backdrop-blur-3xl border border-white/10 shadow-[0_32px_64px_-16px_rgba(0,0,0,0.5)] rounded-[3rem] p-6 flex flex-row items-center gap-8 relative overflow-hidden group transition-all duration-500 ${isExpanded ? 'pointer-events-auto' : 'pointer-events-none'}`}>
+                <div className={`w-[90vw] md:w-[540px] bg-text-primary/95 backdrop-blur-3xl border-t border-l border-white/20 shadow-[12px_12px_40px_rgba(0,0,0,0.7),inset_-4px_-4px_10px_rgba(0,0,0,0.5)] rounded-[3rem] p-6 flex flex-row items-center gap-8 relative overflow-hidden group transition-all duration-500 ${isExpanded ? 'pointer-events-auto' : 'pointer-events-none'}`}>
 
                     <div className="absolute top-0 right-0 w-64 h-64 bg-green-primary/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 group-hover:bg-green-primary/20 transition-all duration-1000"></div>
 
@@ -141,7 +141,7 @@ export default function FrenchieRadio() {
                         <div className="space-y-4">
                             <div className="flex items-center gap-2">
                                 <span className="flex-shrink-0 h-2 w-2 rounded-full bg-green-primary animate-pulse"></span>
-                                <p className="text-[10px] text-green-primary font-black uppercase tracking-[0.3em] truncate">Frenchies R Us Radio</p>
+                                <p className="text-[10px] text-green-primary font-black uppercase tracking-[0.2em]">Frenchies R Us Radio</p>
                             </div>
 
                             <div className="min-w-0">
@@ -204,9 +204,9 @@ export default function FrenchieRadio() {
 
                             <button
                                 onClick={() => setIsExpanded(false)}
-                                className="absolute -top-3 -right-3 bg-text-primary/90 backdrop-blur-xl p-2 text-gray-400 hover:text-white rounded-full border border-white/10 shadow-xl transition-all z-30"
+                                className="absolute -top-3 -right-3 bg-text-primary/95 backdrop-blur-xl p-2 text-white hover:text-green-primary rounded-full border-t border-l border-white/20 shadow-lg transition-all z-30 active:scale-90"
                             >
-                                <ChevronDown size={20} />
+                                <X size={20} />
                             </button>
                         </div>
 
