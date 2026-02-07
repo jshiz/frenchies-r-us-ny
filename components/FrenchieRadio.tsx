@@ -4,15 +4,15 @@ import { useState, useRef, useEffect } from 'react';
 import { Play, Pause, SkipBack, SkipForward, Music2, Volume2, X, ChevronUp, ChevronDown, ListMusic } from 'lucide-react';
 
 const PLAYLIST = [
-    { id: 1, title: "The Anthem", artist: "Frenchie Royal", src: "/music/The Anthem.mp3" },
-    { id: 2, title: "Exotic Colors", artist: "Frenchie Royal", src: "/music/Exotic Colors.mp3" },
-    { id: 3, title: "Puppy Zoomies", artist: "Frenchie Royal", src: "/music/Puppy Zoomies.mp3" },
-    { id: 4, title: "Royal Bloodline", artist: "Frenchie Royal", src: "/music/Royal Bloodline.mp3" },
-    { id: 5, title: "Not a Kennel", artist: "Frenchie Royal", src: "/music/Not a Kennel.mp3" },
-    { id: 6, title: "The Anthem 2", artist: "Frenchie Royal", src: "/music/The Anthem 2.mp3" },
-    { id: 7, title: "Exotic Colors 2", artist: "Frenchie Royal", src: "/music/Exotic Colors 2.mp3" },
-    { id: 8, title: "Royal Bloodline 2", artist: "Frenchie Royal", src: "/music/Royal Bloodline 2.mp3" },
-    { id: 9, title: "Not a Kennel 2", artist: "Frenchie Royal", src: "/music/Not a Kennel 2.mp3" }
+    { id: 1, title: "The Anthem", artist: "Frenchie Royal", src: "/music/The Anthem.mp3", art: "/music/The Anthem.jpeg" },
+    { id: 2, title: "Exotic Colors", artist: "Frenchie Royal", src: "/music/Exotic Colors.mp3", art: "/music/Exotic Colors.jpeg" },
+    { id: 3, title: "Puppy Zoomies", artist: "Frenchie Royal", src: "/music/Puppy Zoomies.mp3", art: "/music/Puppy Zoomies.jpeg" },
+    { id: 4, title: "Royal Bloodline", artist: "Frenchie Royal", src: "/music/Royal Bloodline.mp3", art: "/music/Royal Bloodline.jpeg" },
+    { id: 5, title: "Not a Kennel", artist: "Frenchie Royal", src: "/music/Not a Kennel.mp3", art: "/music/Not a Kennel.jpeg" },
+    { id: 6, title: "The Anthem 2", artist: "Frenchie Royal", src: "/music/The Anthem 2.mp3", art: "/music/The Anthem 2.jpeg" },
+    { id: 7, title: "Exotic Colors 2", artist: "Frenchie Royal", src: "/music/Exotic Colors 2.mp3", art: "/music/Exotic Colors 2.jpeg" },
+    { id: 8, title: "Royal Bloodline 2", artist: "Frenchie Royal", src: "/music/Royal Bloodline 2.mp3", art: "/music/Royal Bloodline 2.jpeg" },
+    { id: 9, title: "Not a Kennel 2", artist: "Frenchie Royal", src: "/music/Not a Kennel 2.mp3", art: "/music/Not a Kennel 2.jpeg" }
 ];
 
 export default function FrenchieRadio() {
@@ -82,6 +82,13 @@ export default function FrenchieRadio() {
                     aria-label="Open Frenchie Radio"
                 >
                     <div className={`w-12 h-12 rounded-full flex items-center justify-center text-white relative overflow-hidden transition-transform duration-700 group-hover:scale-110 ${isPlaying ? 'bg-green-primary shadow-[0_0_30px_rgba(123,154,109,0.5)]' : 'bg-text-primary'}`}>
+                        {/* Album Art Overlay */}
+                        <img
+                            src={PLAYLIST[trackIndex].art}
+                            alt="Art"
+                            className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ${isPlaying ? 'opacity-40' : 'opacity-20'}`}
+                        />
+
                         {isPlaying ? (
                             <div className="flex gap-1 items-end h-4 relative z-10">
                                 <span className="w-1 bg-white animate-[bounce_1s_infinite] h-2"></span>
@@ -126,15 +133,22 @@ export default function FrenchieRadio() {
 
                     {/* Album Art / Fun Visualizer */}
                     <div className="relative group/art">
-                        <div className={`w-20 md:w-24 h-20 md:h-24 bg-gradient-to-br from-green-primary to-green-dark rounded-3xl flex-shrink-0 flex items-center justify-center text-white shadow-2xl transition-all duration-700 overflow-hidden ${isPlaying ? 'rotate-[360deg] rounded-full' : 'hover:scale-105'}`}>
-                            <Music2 size={40} className={isPlaying ? 'animate-pulse' : ''} />
+                        <div className={`w-20 md:w-24 h-20 md:h-24 bg-text-primary rounded-3xl flex-shrink-0 flex items-center justify-center text-white shadow-2xl transition-all duration-700 overflow-hidden relative ${isPlaying ? 'rotate-[360deg] rounded-full' : 'hover:scale-105'}`}>
+                            {/* Actual Album Art Image */}
+                            <img
+                                src={PLAYLIST[trackIndex].art}
+                                alt={PLAYLIST[trackIndex].title}
+                                className={`absolute inset-0 w-full h-full object-cover transition-transform duration-1000 ${isPlaying ? 'scale-110' : 'scale-100'}`}
+                            />
+
                             {/* Inner Circle to look like Vinyl */}
                             {isPlaying && (
-                                <div className="absolute inset-0 flex items-center justify-center">
-                                    <div className="w-2 h-2 bg-white rounded-full"></div>
+                                <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                                    <div className="w-4 h-4 bg-white rounded-full z-20 border-2 border-black/20"></div>
+                                    <div className="absolute inset-0 border-[10px] border-black/40 rounded-full"></div>
                                     <div className="absolute inset-0 border-4 border-black/20 rounded-full"></div>
-                                    <div className="absolute inset-[15px] border border-white/10 rounded-full"></div>
-                                    <div className="absolute inset-[25px] border border-white/10 rounded-full"></div>
+                                    <div className="absolute inset-[20px] border border-white/10 rounded-full"></div>
+                                    <div className="absolute inset-[30px] border border-white/10 rounded-full"></div>
                                 </div>
                             )}
                         </div>
