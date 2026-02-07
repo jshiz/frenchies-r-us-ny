@@ -108,7 +108,7 @@ export default function FrenchieRadio() {
 
                     <div className="flex flex-col items-start translate-x-1 group-hover:translate-x-2 transition-transform">
                         <span className="text-[9px] font-black uppercase tracking-widest text-green-primary">Playing</span>
-                        <span className="text-xs font-serif font-black italic text-white truncate max-w-[80px]">
+                        <span className="text-xs font-serif font-black italic text-white truncate max-w-[100px]">
                             {isPlaying ? PLAYLIST[trackIndex].title : "Radio"}
                         </span>
                     </div>
@@ -143,7 +143,7 @@ export default function FrenchieRadio() {
                     <div className="flex-1 min-w-0 flex flex-col justify-center min-h-[64px]">
                         <div className="flex items-center gap-2 mb-0.5">
                             <span className="flex h-1.5 w-1.5 rounded-full bg-green-primary animate-pulse"></span>
-                            <p className="text-[9px] text-green-primary font-black uppercase tracking-widest">Live Beta</p>
+                            <p className="text-[9px] text-green-primary font-black uppercase tracking-widest">Frenchies R Us Radio</p>
                         </div>
                         <h4 className="font-serif text-lg md:text-xl font-black text-white italic leading-tight truncate">
                             {PLAYLIST[trackIndex].title}
