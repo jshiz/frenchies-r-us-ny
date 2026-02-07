@@ -115,9 +115,9 @@ export default function FrenchieRadio() {
                     onClick={() => setIsExpanded(true)}
                     className={`fixed bottom-6 right-6 z-[60] group flex items-center gap-3 bg-text-primary/90 backdrop-blur-xl border border-white/20 p-2 pr-6 rounded-full shadow-2xl hover:bg-text-primary hover:border-green-primary/50 transition-all duration-500 cursor-pointer animate-fade-in-up w-[250px] ${isPlaying ? 'animate-bounce-slow' : ''}`}
                 >
-                    {/* Art Container */}
+                    {/* Art Container - Always Circle */}
                     <div
-                        className={`w-12 h-12 flex-shrink-0 flex items-center justify-center relative overflow-hidden transition-all duration-[1000ms] cubic-bezier(0.4, 0, 0.2, 1) ${isPlaying ? 'rounded-full bg-green-primary shadow-[0_0_30px_rgba(123,154,109,0.5)]' : 'rounded-xl bg-text-primary'}`}
+                        className={`w-12 h-12 flex-shrink-0 flex items-center justify-center relative overflow-hidden transition-all duration-[1000ms] cubic-bezier(0.4, 0, 0.2, 1) rounded-full ${isPlaying ? 'bg-green-primary shadow-[0_0_20px_rgba(123,154,109,0.4)]' : 'bg-white/5'}`}
                     >
                         {/* The sliding record element - ALWAYS circular to avoid square "bouncing" */}
                         <div className={`absolute inset-0 w-full h-full rounded-full overflow-hidden ${isSwapping ? 'record-exit' : 'record-enter'}`}>
@@ -209,9 +209,9 @@ export default function FrenchieRadio() {
 
                     <div className="flex flex-col items-center gap-4">
                         <div className="relative group/art">
-                            {/* Container Morph */}
+                            {/* Art Container - Always Circle */}
                             <div
-                                className={`w-28 h-28 md:w-40 md:h-40 bg-text-primary flex-shrink-0 flex items-center justify-center text-white shadow-[0_20px_50px_rgba(0,0,0,0.5)] transition-all duration-[1000ms] cubic-bezier(0.4, 0, 0.2, 1) overflow-hidden relative ${isPlaying ? 'rounded-full scale-105' : 'rounded-[2rem]'}`}
+                                className={`w-28 h-28 md:w-40 md:h-40 flex-shrink-0 flex items-center justify-center text-white shadow-[0_20px_50px_rgba(0,0,0,0.5)] transition-all duration-[1000ms] cubic-bezier(0.4, 0, 0.2, 1) overflow-hidden relative rounded-full ${isPlaying ? 'scale-105' : 'bg-white/5'}`}
                             >
                                 {/* Sliding Record element - Force circular at all times */}
                                 <div className={`absolute inset-0 w-full h-full rounded-full overflow-hidden ${isSwapping ? 'record-exit' : 'record-enter'}`}>
