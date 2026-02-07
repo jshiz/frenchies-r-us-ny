@@ -5,32 +5,30 @@ export default function About() {
         <section id="about" className="py-24 bg-white relative overflow-hidden">
             <div className="max-w-7xl mx-auto px-6">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-                    {/* Image Side */}
-                    <div className="relative h-[600px] rotate-0 md:rotate-1 hover:rotate-0 transition-all duration-700 group">
-                        {/* Image Container with Masking */}
-                        <div
-                            className="absolute inset-0 rounded-[2.5rem] overflow-hidden shadow-2xl bg-gray-100 isolate"
-                            style={{ backfaceVisibility: 'hidden', WebkitMaskImage: '-webkit-radial-gradient(white, black)' }}
-                        >
+                    {/* Image/Art Side - Brand Focused */}
+                    <div className="relative group p-4">
+                        {/* Main Brand Image - Graffiti Style */}
+                        <div className="relative z-10 transition-transform duration-700 group-hover:scale-[1.02]">
                             <img
-                                src="/images/kbriggs.jpg"
-                                alt="Kevin D Briggs Jr - The King of Frenchies"
-                                className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-all duration-1000"
+                                src="/images/frenchies-r-us-graffiti.png"
+                                alt="Frenchies R Us NY Brand Art"
+                                className="w-full h-auto drop-shadow-[0_20px_50px_rgba(123,154,109,0.3)]"
                             />
-                            <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent"></div>
                         </div>
 
-                        {/* Floating Badges - Outside the mask for maximum sharpness */}
-                        <div className="absolute top-8 left-8 z-20 transition-transform duration-500 group-hover:translate-x-2 group-hover:-translate-y-2">
-                            <div className="bg-white/95 backdrop-blur-md text-text-primary px-5 py-3 rounded-2xl shadow-[0_20px_40px_rgba(0,0,0,0.2)] transform rotate-0 md:-rotate-3 border-2 border-green-primary antialiased">
-                                <span className="font-marker text-xs uppercase tracking-[0.2em] block text-green-primary mb-1">Top Tier</span>
-                                <span className="font-serif font-black text-xl leading-none">Empire Breeder</span>
+                        {/* Top Left Overlay Card - Brand Focus */}
+                        <div className="absolute top-0 left-0 z-20 transition-all duration-500 group-hover:translate-x-2 group-hover:-translate-y-2">
+                            <div className="bg-text-primary/95 backdrop-blur-xl text-white px-6 py-4 rounded-[2rem] shadow-[10px_10px_30px_rgba(0,0,0,0.3)] border-t border-l border-white/20 transform md:-rotate-3">
+                                <span className="font-marker text-green-primary text-sm uppercase tracking-[0.2em] block mb-1">Established</span>
+                                <span className="font-serif font-black text-2xl leading-none italic uppercase tracking-tighter">Elite NY Legacy</span>
                             </div>
                         </div>
 
-                        <div className="absolute bottom-10 left-10 text-white z-20 transition-transform duration-500 group-hover:translate-y-[-8px]">
-                            <p className="font-marker text-2xl mb-2 text-green-light drop-shadow-lg">The Man Behind the Brand</p>
-                            <p className="font-serif text-2xl font-black tracking-wide drop-shadow-2xl underline decoration-green-primary decoration-4 underline-offset-8">Kevin D Briggs Jr</p>
+                        {/* Secondary Brand Badge */}
+                        <div className="absolute bottom-4 right-4 z-20 transition-all duration-500 group-hover:-translate-x-2 group-hover:translate-y-2 hidden md:block">
+                            <div className="bg-green-primary text-white p-4 rounded-full shadow-2xl transform rotate-12 border-4 border-white/30">
+                                <span className="font-marker text-lg tracking-widest uppercase italic">DNA Certified</span>
+                            </div>
                         </div>
                     </div>
 
@@ -45,14 +43,14 @@ export default function About() {
                         </h2>
 
                         <div className="space-y-6 text-text-secondary text-lg leading-relaxed max-w-xl mx-auto lg:mx-0">
-                            <p className="font-bold text-text-primary text-xl">
-                                Before it was a brand, it was a bond.
+                            <p className="font-bold text-text-primary text-xl uppercase tracking-tighter italic">
+                                Built on Logic. Defined by Structure.
                             </p>
                             <p>
-                                Founded in the heart of the Capital Region, Frenchies R Us NY was born from Kevin D Briggs Jr's obsession with perfecting the breed. Disappointed by the lack of structural integrity and health standards in the exotic market, he set out to build a lineage that didn't just look royal—but lived like it.
+                                Frenchies R Us NY is more than a breeder—it&apos;s a standard of excellence established in the heart of the Capital Region. Born from a relentless drive to perfect the French Bulldog lineage, the brand focuses on correcting the structural and health flaws prevalent in the exotic market.
                             </p>
                             <p>
-                                Every breeding at our headquarters is a scientific endeavor. We prioritize the "Triple Crown": **Perfect Structure**, **Elite Genetics**, and **Bulletproof Health**. When you join our family, you aren't just buying a pet; you're inheriting a legacy of excellence that Kevin has cultivated over years.
+                                Every breeding at our headquarters is a high-level scientific endeavor. Founder Kevin D Briggs Jr directs our focus toward the &quot;Triple Crown&quot; of elite breeding: **Perfect Structure**, **Elite Genetics**, and **Bulletproof Health**. When you choose a puppy from our program, you are securing a piece of an world-class legacy.
                             </p>
                         </div>
 

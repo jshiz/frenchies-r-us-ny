@@ -5,14 +5,9 @@ import { Play, Pause, SkipBack, SkipForward, Music2, ChevronDown, ChevronLeft, X
 
 const PLAYLIST = [
     { id: 1, title: "The Anthem", artist: "Frenchie Royal", src: "/music/The Anthem.mp3", art: "/music/The Anthem.jpeg" },
-    { id: 2, title: "Exotic Colors", artist: "Frenchie Royal", src: "/music/Exotic Colors.mp3", art: "/music/Exotic Colors.jpeg" },
-    { id: 3, title: "Puppy Zoomies", artist: "Frenchie Royal", src: "/music/Puppy Zoomies.mp3", art: "/music/Puppy Zoomies.jpeg" },
-    { id: 4, title: "Royal Bloodline", artist: "Frenchie Royal", src: "/music/Royal Bloodline.mp3", art: "/music/Royal Bloodline.jpeg" },
-    { id: 5, title: "Not a Kennel", artist: "Frenchie Royal", src: "/music/Not a Kennel.mp3", art: "/music/Not a Kennel.jpeg" },
-    { id: 6, title: "Champion’s Creed", artist: "Frenchie Royal", src: "/music/Champion’s Creed.mp3", art: "/music/Champion’s Creed.jpeg" },
-    { id: 7, title: "Vivid Pedigree", artist: "Frenchie Royal", src: "/music/Vivid Pedigree.mp3", art: "/music/Vivid Pedigree.jpeg" },
-    { id: 8, title: "Noble Genetics", artist: "Frenchie Royal", src: "/music/Noble Genetics.mp3", art: "/music/Noble Genetics.jpeg" },
-    { id: 9, title: "Living Room Legacy", artist: "Frenchie Royal", src: "/music/Living Room Legacy.mp3", art: "/music/Living Room Legacy.jpeg" }
+    { id: 2, title: "Royal Bloodline", artist: "Frenchie Royal", src: "/music/Royal Bloodline.mp3", art: "/music/Royal Bloodline.jpeg" },
+    { id: 3, title: "Champion’s Creed", artist: "Frenchie Royal", src: "/music/Champion’s Creed.mp3", art: "/music/Champion’s Creed.jpeg" },
+    { id: 4, title: "Noble Genetics", artist: "Frenchie Royal", src: "/music/Noble Genetics.mp3", art: "/music/Noble Genetics.jpeg" }
 ];
 
 // Symmetrical Audio Bar Animation
