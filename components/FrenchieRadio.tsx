@@ -115,9 +115,9 @@ export default function FrenchieRadio() {
                 </button>
             )}
 
-            {/* Expanded Player - Reworked Layout */}
-            <div className={`fixed bottom-0 left-0 right-0 z-50 p-4 md:p-6 transition-all duration-700 ease-in-out pointer-events-none ${isExpanded ? 'translate-y-0 opacity-100' : 'translate-y-full opacity-0'}`}>
-                <div className="max-w-xl mx-auto bg-text-primary/95 backdrop-blur-3xl border border-white/10 shadow-[0_32px_64px_-16px_rgba(0,0,0,0.5)] rounded-[3rem] p-6 flex flex-row items-center gap-8 pointer-events-auto relative overflow-hidden group">
+            {/* Expanded Player - Repositioned to Bottom Right */}
+            <div className={`fixed bottom-0 right-0 z-50 p-4 md:p-8 transition-all duration-700 ease-in-out pointer-events-none ${isExpanded ? 'translate-y-0 opacity-100 scale-100' : 'translate-y-20 opacity-0 scale-95'}`}>
+                <div className="max-w-xl bg-text-primary/95 backdrop-blur-3xl border border-white/10 shadow-[0_32px_64px_-16px_rgba(0,0,0,0.5)] rounded-[3rem] p-6 flex flex-row items-center gap-8 pointer-events-auto relative overflow-hidden group">
 
                     {/* Background Glow */}
                     <div className="absolute top-0 right-0 w-64 h-64 bg-green-primary/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 group-hover:bg-green-primary/20 transition-all duration-1000"></div>
