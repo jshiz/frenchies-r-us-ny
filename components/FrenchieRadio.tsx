@@ -16,22 +16,6 @@ const PLAYLIST = [
 ];
 
 // Symmetrical Audio Bar Animation
-const Equalizer = () => (
-    <div className="flex gap-1 items-end h-6 w-12 justify-center">
-        {[0.6, 0.4, 0.8, 0.5, 0.7, 0.5, 0.8, 0.4, 0.6].map((h, i) => (
-            <span
-                key={i}
-                className="w-1 bg-green-primary rounded-full animate-bounce"
-                style={{
-                    animationDuration: `${0.6 + Math.abs(i - 4) * 0.15}s`,
-                    height: `${isPlaying ? (h * 100) + '%' : '15%'}`
-                }}
-            ></span>
-        ))}
-    </div>
-);
-
-// Helper for EQ since it needs access to playing state if moved, but we can just pass it
 const SymmetricalEQ = ({ isPlaying }: { isPlaying: boolean }) => (
     <div className="flex gap-1 items-end h-6 w-12 justify-center">
         {[0.6, 0.4, 0.8, 0.5, 0.7, 0.5, 0.8, 0.4, 0.6].map((h, i) => (
@@ -152,7 +136,7 @@ export default function FrenchieRadio() {
                                 <h4 className="font-serif text-2xl md:text-4xl font-black text-white italic leading-tight truncate pr-4">
                                     {PLAYLIST[trackIndex].title}
                                 </h4>
-                                <p className="text-gray-500 text-[10px] md:text-xs font-bold uppercase tracking-widest mt-1 opacity-60">Masterwork Bloodline</p>
+                                <p className="text-gray-500 text-[10px] md:text-xs font-bold uppercase tracking-widest mt-1 opacity-60">Bred for Perfection</p>
                             </div>
                         </div>
 
