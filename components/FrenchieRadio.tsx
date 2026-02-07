@@ -80,7 +80,7 @@ export default function FrenchieRadio() {
             {!isExpanded && (
                 <button
                     onClick={() => setIsExpanded(true)}
-                    className={`fixed bottom-6 right-6 z-50 group flex items-center gap-3 bg-text-primary/10 backdrop-blur-xl border border-white/20 p-2 pr-8 rounded-full shadow-2xl hover:bg-white/20 transition-all duration-500 cursor-pointer animate-fade-in-up ${isPlaying ? 'animate-bounce-slow' : ''}`}
+                    className={`fixed bottom-6 right-6 z-50 group flex items-center gap-3 bg-text-primary/95 backdrop-blur-xl border border-white/20 p-2 pr-8 rounded-full shadow-2xl hover:bg-white/30 transition-all duration-500 cursor-pointer animate-fade-in-up ${isPlaying ? 'animate-bounce-slow' : ''}`}
                 >
                     <div className={`w-12 h-12 rounded-full flex items-center justify-center relative overflow-hidden transition-transform duration-700 group-hover:scale-110 ${isPlaying ? 'bg-green-primary shadow-[0_0_30px_rgba(123,154,109,0.5)]' : 'bg-text-primary'}`}>
                         <img
