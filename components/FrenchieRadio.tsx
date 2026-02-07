@@ -106,9 +106,9 @@ export default function FrenchieRadio() {
                         </div>
                     )}
 
-                    <div className="flex flex-col items-start translate-x-1 group-hover:translate-x-2 transition-transform pr-1">
+                    <div className="flex flex-col items-start translate-x-1 group-hover:translate-x-2 transition-transform pr-2">
                         <span className="text-[9px] font-black uppercase tracking-widest text-green-primary">Playing</span>
-                        <span className="text-xs font-serif font-black italic text-white truncate max-w-[110px]">
+                        <span className="text-xs font-serif font-black italic text-white truncate max-w-[120px] pr-2">
                             {isPlaying ? PLAYLIST[trackIndex].title : "Radio"}
                         </span>
                     </div>
