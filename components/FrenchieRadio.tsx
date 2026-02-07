@@ -110,7 +110,7 @@ export default function FrenchieRadio() {
             {!isExpanded && (
                 <button
                     onClick={() => setIsExpanded(true)}
-                    className={`fixed bottom-6 right-6 z-50 group flex items-center gap-3 bg-text-primary/90 backdrop-blur-xl border border-white/20 p-2 pr-8 rounded-full shadow-2xl hover:bg-white/30 transition-all duration-500 cursor-pointer animate-fade-in-up ${isPlaying ? 'animate-bounce-slow' : ''}`}
+                    className={`fixed bottom-6 right-6 z-[60] group flex items-center gap-3 bg-text-primary/90 backdrop-blur-xl border border-white/20 p-2 pr-8 rounded-full shadow-2xl hover:bg-white/30 transition-all duration-500 cursor-pointer animate-fade-in-up ${isPlaying ? 'animate-bounce-slow' : ''}`}
                 >
                     <div
                         className={`w-12 h-12 flex items-center justify-center relative overflow-hidden transition-all duration-[1200ms] cubic-bezier(0.4, 0, 0.2, 1) group-hover:scale-110 ${isPlaying ? 'bg-green-primary shadow-[0_0_30px_rgba(123,154,109,0.5)] rounded-full' : 'bg-text-primary rounded-xl'}`}
@@ -141,17 +141,19 @@ export default function FrenchieRadio() {
                     )}
 
                     <div className="flex flex-col items-start translate-x-1 group-hover:translate-x-2 transition-transform pr-2">
-                        <span className="text-[9px] font-black uppercase tracking-widest text-green-primary">Playing</span>
-                        <span className="text-sm font-serif font-black italic text-white truncate max-w-[120px] pr-2">
-                            {isPlaying ? PLAYLIST[trackIndex].title : "Radio"}
+                        <span className="text-[9px] font-black uppercase tracking-widest text-green-primary">
+                            {isPlaying ? 'Now Playing' : 'Elite Vibes'}
+                        </span>
+                        <span className="text-sm font-serif font-black italic text-white truncate max-w-[140px] pr-2">
+                            {isPlaying ? PLAYLIST[trackIndex].title : "Play Radio"}
                         </span>
                     </div>
                 </button>
             )}
 
             {/* Expanded Player */}
-            <div className={`fixed bottom-0 right-0 z-50 p-4 md:p-8 transition-all duration-700 ease-in-out pointer-events-none ${isExpanded ? 'translate-y-0 opacity-100 scale-100' : 'translate-y-20 opacity-0 scale-95'}`}>
-                <div className="max-w-xl bg-text-primary/90 backdrop-blur-3xl border border-white/10 shadow-[0_32px_64px_-16px_rgba(0,0,0,0.5)] rounded-[3rem] p-6 flex flex-row items-center gap-8 pointer-events-auto relative overflow-hidden group">
+            <div className={`fixed bottom-0 right-0 z-50 p-4 md:p-8 transition-all duration-700 ease-in-out pointer-events-none ${isExpanded ? 'translate-y-0 opacity-100 scale-100' : 'translate-y-20 opacity-0 scale-95 invisible'}`}>
+                <div className={`max-w-xl bg-text-primary/90 backdrop-blur-3xl border border-white/10 shadow-[0_32px_64px_-16px_rgba(0,0,0,0.5)] rounded-[3rem] p-6 flex flex-row items-center gap-8 relative overflow-hidden group transition-all duration-500 ${isExpanded ? 'pointer-events-auto' : 'pointer-events-none'}`}>
 
                     <div className="absolute top-0 right-0 w-64 h-64 bg-green-primary/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 group-hover:bg-green-primary/20 transition-all duration-1000"></div>
 
