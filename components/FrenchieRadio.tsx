@@ -82,11 +82,13 @@ export default function FrenchieRadio() {
                     onClick={() => setIsExpanded(true)}
                     className={`fixed bottom-6 right-6 z-50 group flex items-center gap-3 bg-text-primary/95 backdrop-blur-xl border border-white/20 p-2 pr-8 rounded-full shadow-2xl hover:bg-white/30 transition-all duration-500 cursor-pointer animate-fade-in-up ${isPlaying ? 'animate-bounce-slow' : ''}`}
                 >
-                    <div className={`w-12 h-12 rounded-full flex items-center justify-center relative overflow-hidden transition-transform duration-700 group-hover:scale-110 ${isPlaying ? 'bg-green-primary shadow-[0_0_30px_rgba(123,154,109,0.5)]' : 'bg-text-primary'}`}>
+                    <div
+                        className={`w-12 h-12 flex items-center justify-center relative overflow-hidden transition-all duration-[1200ms] cubic-bezier(0.4, 0, 0.2, 1) group-hover:scale-110 ${isPlaying ? 'bg-green-primary shadow-[0_0_30px_rgba(123,154,109,0.5)] rounded-full' : 'bg-text-primary rounded-xl'}`}
+                    >
                         <img
                             src={PLAYLIST[trackIndex].art}
                             alt="Art"
-                            className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ${isPlaying ? 'opacity-40 animate-spin-slow' : 'opacity-20'}`}
+                            className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${isPlaying ? 'opacity-40 animate-spin-slow' : 'opacity-20'}`}
                         />
                         {isPlaying ? (
                             <div className="flex gap-0.5 items-end h-3 relative z-10">
@@ -168,7 +170,9 @@ export default function FrenchieRadio() {
                     {/* Right Side: Visualizer & Large Album Art */}
                     <div className="flex flex-col items-center gap-4">
                         <div className="relative group/art">
-                            <div className={`w-28 h-28 md:w-40 md:h-40 bg-text-primary rounded-3xl flex-shrink-0 flex items-center justify-center text-white shadow-[0_20px_50px_rgba(0,0,0,0.5)] transition-all duration-1000 overflow-hidden relative ${isPlaying ? 'rotate-[360deg] rounded-full scale-105' : 'hover:scale-105'}`}>
+                            <div
+                                className={`w-28 h-28 md:w-40 md:h-40 bg-text-primary flex-shrink-0 flex items-center justify-center text-white shadow-[0_20px_50px_rgba(0,0,0,0.5)] transition-all duration-[1200ms] cubic-bezier(0.4, 0, 0.2, 1) overflow-hidden relative ${isPlaying ? 'rounded-full scale-105' : 'rounded-[2rem] hover:scale-105'}`}
+                            >
                                 <img
                                     src={PLAYLIST[trackIndex].art}
                                     alt={PLAYLIST[trackIndex].title}
