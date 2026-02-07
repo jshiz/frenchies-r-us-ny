@@ -115,8 +115,10 @@ export default function RootLayout({
       <head>
         {/* Structured Data */}
         <script
+          id="schema-org"
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+          suppressHydrationWarning
         />
       </head>
       <body className="font-sans min-h-screen flex flex-col">

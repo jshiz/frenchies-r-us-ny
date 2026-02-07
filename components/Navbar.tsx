@@ -26,25 +26,25 @@ export default function Navbar() {
         <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${isSolid ? 'bg-white/95 backdrop-blur-md shadow-sm py-2' : 'bg-transparent py-4'}`}>
             <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
                 {/* Logo Area */}
-                <Link href="/" className="flex items-center gap-2 md:gap-3 group shrink-0">
-                    <div className="relative w-10 h-10 md:w-16 md:h-16 transition-transform group-hover:scale-110">
+                <Link href="/" className="flex items-center gap-1.5 sm:gap-2 lg:gap-3 group shrink-0">
+                    <div className="relative w-8 h-8 sm:w-10 sm:h-10 lg:w-16 lg:h-16 transition-transform group-hover:scale-110">
                         <img
                             src="/frenchiesrus-logo-plain.png"
                             alt="Frenchies R Us NY"
                             className="w-full h-full object-contain drop-shadow-[4px_4px_0px_#7B9A6D]"
                         />
                     </div>
-                    <div className="flex flex-row items-center gap-1.5 md:gap-4 ml-1 transition-all">
-                        <span className={`font-serif text-lg md:text-3xl font-black tracking-tight ${isSolid ? 'text-text-primary' : 'text-white'} drop-shadow-md leading-none`}>
+                    <div className="flex flex-row items-center gap-1 lg:gap-4 ml-1 transition-all">
+                        <span className={`font-serif text-base sm:text-lg lg:text-3xl font-black tracking-tight ${isSolid ? 'text-text-primary' : 'text-white'} drop-shadow-md leading-none`}>
                             Frenchies
                         </span>
-                        <span className={`font-marker text-sm md:text-2xl tracking-widest ${isSolid ? 'text-green-primary' : 'text-green-light'} rotate-[-2deg] leading-none whitespace-nowrap`}>
+                        <span className={`font-marker text-[10px] sm:text-sm lg:text-2xl tracking-widest ${isSolid ? 'text-green-primary' : 'text-green-light'} rotate-[-2deg] leading-none whitespace-nowrap`}>
                             R US
                         </span>
                     </div>
                 </Link>
 
-                <div className="hidden md:flex items-center gap-8">
+                <div className="hidden lg:flex items-center gap-8">
                     {['The Man', 'The Studs', 'The Pups', 'The Lab', 'The Contract'].map((item) => {
                         const slug = item.toLowerCase().replace(' ', '-').replace('the-', '');
                         const targetId = slug === 'man' ? 'about' :
@@ -84,7 +84,7 @@ export default function Navbar() {
 
                 {/* Mobile Toggle */}
                 <button
-                    className={`md:hidden p-2 transition-colors ${isSolid ? 'text-gray-800' : 'text-white'}`}
+                    className={`lg:hidden p-2 transition-colors ${isSolid ? 'text-gray-800' : 'text-white'}`}
                     onClick={() => setIsOpen(!isOpen)}
                 >
                     {isOpen ? <X size={28} /> : <Menu size={28} />}
@@ -92,7 +92,7 @@ export default function Navbar() {
             </div>
 
             {isOpen && (
-                <div className="md:hidden absolute top-full left-0 w-full bg-white border-t border-gray-100 shadow-2xl py-12 flex flex-col items-center gap-10 animate-fade-in-up">
+                <div className="lg:hidden absolute top-full left-0 w-full bg-white border-t border-gray-100 shadow-2xl py-12 flex flex-col items-center gap-10 animate-fade-in-up">
                     {['The Man', 'The Studs', 'The Pups', 'The Lab', 'The Contract'].map((item) => {
                         const slug = item.toLowerCase().replace(' ', '-').replace('the-', '');
                         const targetId = slug === 'man' ? 'about' :

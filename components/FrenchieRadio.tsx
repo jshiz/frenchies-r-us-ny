@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useRef, useEffect } from 'react';
-import { Play, Pause, SkipBack, SkipForward, Music2, ChevronDown } from 'lucide-react';
+import { Play, Pause, SkipBack, SkipForward, Music2, ChevronDown, ChevronLeft } from 'lucide-react';
 
 const PLAYLIST = [
     { id: 1, title: "The Anthem", artist: "Frenchie Royal", src: "/music/The Anthem.mp3", art: "/music/The Anthem.jpeg" },
@@ -35,7 +35,7 @@ export default function FrenchieRadio() {
     const [isPlaying, setIsPlaying] = useState(false);
     const [trackIndex, setTrackIndex] = useState(0);
     const [isExpanded, setIsExpanded] = useState(false);
-    const [isSwapping, setIsSwapping] = useState(false);
+
     const audioRef = useRef<HTMLAudioElement | null>(null);
 
     const togglePlay = () => {
@@ -49,23 +49,13 @@ export default function FrenchieRadio() {
     };
 
     const nextTrack = () => {
-        if (isSwapping) return;
-        setIsSwapping(true);
-        setTimeout(() => {
-            setTrackIndex((prev) => (prev + 1) % PLAYLIST.length);
-            setIsPlaying(true);
-            setTimeout(() => setIsSwapping(false), 700);
-        }, 350);
+        setTrackIndex((prev) => (prev + 1) % PLAYLIST.length);
+        setIsPlaying(true);
     };
 
     const prevTrack = () => {
-        if (isSwapping) return;
-        setIsSwapping(true);
-        setTimeout(() => {
-            setTrackIndex((prev) => (prev - 1 + PLAYLIST.length) % PLAYLIST.length);
-            setIsPlaying(true);
-            setTimeout(() => setIsSwapping(false), 700);
-        }, 350);
+        setTrackIndex((prev) => (prev - 1 + PLAYLIST.length) % PLAYLIST.length);
+        setIsPlaying(true);
     };
 
     const handleSongEnd = () => {
@@ -85,20 +75,10 @@ export default function FrenchieRadio() {
     return (
         <>
             <style jsx global>{`
-                @keyframes record-exit {
-                    0% { transform: translate(0, 0) rotate(0deg) scale(1); opacity: 1; }
-                    100% { transform: translate(-120%, -100%) rotate(-60deg) scale(0.7); opacity: 0; }
-                }
-                @keyframes record-enter {
-                    0% { transform: translate(120%, 80%) rotate(60deg) scale(0.7); opacity: 0; }
-                    100% { transform: translate(0, 0) rotate(0deg) scale(1); opacity: 1; }
-                }
                 @keyframes spin-slow {
                     from { transform: rotate(0deg); }
                     to { transform: rotate(360deg); }
                 }
-                .record-exit { animation: record-exit 0.4s cubic-bezier(0.45, 0, 0.55, 1) forwards; }
-                .record-enter { animation: record-enter 0.6s cubic-bezier(0.34, 1.3, 0.64, 1) forwards; }
                 .animate-spin-slow { animation: spin-slow 12s linear infinite; }
             `}</style>
 
@@ -109,57 +89,46 @@ export default function FrenchieRadio() {
                 onPause={() => setIsPlaying(false)}
             />
 
-            {/* Collapsed Widget - Fixed Size */}
+            {/* Collapsed Widget - Ultra Condensed */}
             {!isExpanded && (
-                <button
-                    onClick={() => setIsExpanded(true)}
-                    className={`fixed bottom-6 right-6 z-[60] group flex items-center gap-3 bg-text-primary/90 backdrop-blur-xl border border-white/20 p-2 pr-6 rounded-full shadow-2xl hover:bg-text-primary hover:border-green-primary/50 transition-all duration-500 cursor-pointer animate-fade-in-up w-[250px] ${isPlaying ? 'animate-bounce-slow' : ''}`}
-                >
-                    {/* Art Container - Always Circle */}
-                    <div
-                        className={`w-12 h-12 flex-shrink-0 flex items-center justify-center relative overflow-hidden transition-all duration-[1000ms] cubic-bezier(0.4, 0, 0.2, 1) rounded-full ${isPlaying ? 'bg-green-primary shadow-[0_0_20px_rgba(123,154,109,0.4)]' : 'bg-white/5'}`}
+                <div className={`fixed bottom-6 right-6 z-[60] flex items-center gap-2 bg-text-primary/95 backdrop-blur-xl border border-white/10 p-1.5 rounded-full shadow-[0_20px_50px_rgba(0,0,0,0.4)] transition-all duration-500 hover:border-green-primary/30 ${isPlaying ? 'animate-bounce-slow' : ''}`}>
+                    {/* Pop out arrow - Left side */}
+                    <button
+                        onClick={() => setIsExpanded(true)}
+                        className="p-1.5 text-white/40 hover:text-green-primary transition-colors cursor-pointer"
                     >
-                        {/* The sliding record element - ALWAYS circular to avoid square "bouncing" */}
-                        <div className={`absolute inset-0 w-full h-full rounded-full overflow-hidden ${isSwapping ? 'record-exit' : 'record-enter'}`}>
+                        <ChevronLeft size={20} />
+                    </button>
+
+                    {/* Art Container - Simple spinning record */}
+                    <button
+                        onClick={() => setIsExpanded(true)}
+                        className="w-11 h-11 flex-shrink-0 flex items-center justify-center relative overflow-hidden rounded-full cursor-pointer group/art"
+                    >
+                        {/* The record artwork with crossfade */}
+                        <div className="absolute inset-0 w-full h-full rounded-full overflow-hidden">
                             <img
+                                key={trackIndex}
                                 src={PLAYLIST[trackIndex].art}
                                 alt="Art"
-                                className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${isPlaying ? 'opacity-40 animate-spin-slow' : 'opacity-20'}`}
+                                className={`absolute inset-0 w-full h-full object-cover rounded-full ${isPlaying ? 'animate-spin-slow' : ''} transition-opacity duration-1000 opacity-100`}
                             />
-                            {/* Inner Vinyl details that slide with the record */}
-                            {isPlaying && (
-                                <div className="absolute inset-0 border-[8px] border-black/10 rounded-full animate-spin-slow"></div>
-                            )}
-                        </div>
-
-                        {!isPlaying && !isSwapping && (
-                            <Music2 size={24} className="relative z-10 text-white transition-opacity duration-500" />
-                        )}
-
-                        {isPlaying && !isSwapping && (
-                            <div className="flex gap-0.5 items-end h-3 relative z-10">
-                                {[1, 2, 3].map(i => (
-                                    <span key={i} className={`w-1 bg-white animate-[bounce_${0.8 + i * 0.2}s_infinite] h-${i === 2 ? '4' : '2'}`}></span>
-                                ))}
+                            {/* Inner Vinyl detail */}
+                            <div className="absolute inset-0 border-[6px] border-black/10 rounded-full pointer-events-none"></div>
+                            <div className="absolute inset-0 flex items-center justify-center">
+                                <div className="w-1.5 h-1.5 bg-white/20 rounded-full border border-black/10"></div>
                             </div>
-                        )}
-                    </div>
-
-                    {isPlaying && (
-                        <div className="absolute -top-4 left-4 animate-bounce pointer-events-none opacity-60">
-                            <Music2 size={12} className="text-green-primary" />
                         </div>
-                    )}
+                    </button>
 
-                    <div className="flex-1 min-w-0 flex flex-col items-start translate-x-1 group-hover:translate-x-2 transition-transform">
-                        <span className="text-[9px] font-black uppercase tracking-widest text-green-primary truncate w-full text-left">
-                            {isPlaying ? 'Now Playing' : 'Elite Vibes'}
-                        </span>
-                        <span className={`font-serif font-black italic text-white w-full text-left transition-all duration-300 ${(isPlaying ? PLAYLIST[trackIndex].title : "Play Radio").length > 18 ? 'text-[11px]' : 'text-sm'}`}>
-                            {isPlaying ? PLAYLIST[trackIndex].title : "Play Radio"}
-                        </span>
-                    </div>
-                </button>
+                    {/* Small Play Button - Right side */}
+                    <button
+                        onClick={togglePlay}
+                        className="w-9 h-9 flex items-center justify-center text-white hover:text-green-primary transition-all active:scale-90 cursor-pointer mr-0.5"
+                    >
+                        {isPlaying ? <Pause size={18} fill="currentColor" /> : <Play size={18} fill="currentColor" className="ml-0.5" />}
+                    </button>
+                </div>
             )}
 
             {/* Expanded Player - Fixed Size */}
@@ -213,12 +182,13 @@ export default function FrenchieRadio() {
                             <div
                                 className={`w-28 h-28 md:w-40 md:h-40 flex-shrink-0 flex items-center justify-center text-white shadow-[0_20px_50px_rgba(0,0,0,0.5)] transition-all duration-[1000ms] cubic-bezier(0.4, 0, 0.2, 1) overflow-hidden relative rounded-full ${isPlaying ? 'scale-105' : 'bg-white/5'}`}
                             >
-                                {/* Sliding Record element - Force circular at all times */}
-                                <div className={`absolute inset-0 w-full h-full rounded-full overflow-hidden ${isSwapping ? 'record-exit' : 'record-enter'}`}>
+                                {/* Simple artwork container without exit/enter slide */}
+                                <div className="absolute inset-0 w-full h-full rounded-full overflow-hidden">
                                     <img
+                                        key={trackIndex}
                                         src={PLAYLIST[trackIndex].art}
                                         alt={PLAYLIST[trackIndex].title}
-                                        className={`absolute inset-0 w-full h-full object-cover transition-transform duration-1000 ${isPlaying ? 'scale-110 opacity-90 animate-spin-slow' : 'scale-100'}`}
+                                        className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 opacity-100 ${isPlaying ? 'scale-110 animate-spin-slow' : 'scale-100'}`}
                                     />
 
                                     {isPlaying && (
