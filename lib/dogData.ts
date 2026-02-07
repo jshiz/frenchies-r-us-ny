@@ -44,43 +44,43 @@ export const STUDS: Dog[] = [
 export const PUPPIES: Dog[] = [
     {
         id: 1,
-        name: "Blue & Tan / Fluffy / Male",
-        details: ["Visual Fluffy", "World-Class Structure"],
+        name: "Fluffy",
+        details: ["Blue & Tan / Fluffy"],
         gender: "Male",
         img: "/images/puppies/blue-and-tan-fluffy-male.jpg"
     },
     {
         id: 2,
-        name: "Husky / Isabella / Female",
-        details: ["Rare Isabella DNA", "Future Foundation"],
+        name: "Isabella",
+        details: ["Husky / Isabella"],
         gender: "Female",
         img: "/images/puppies/husky-isabella-female.jpg"
     },
     {
         id: 3,
-        name: "Say Less / Koi / Male",
-        details: ["Koi Merle", "Compact Frame"],
+        name: "Say Less",
+        details: ["Koi"],
         gender: "Male",
         img: "/images/puppies/say-less-koi-male.jpg"
     },
     {
         id: 4,
-        name: "Say Somethin / Koi / Male",
-        details: ["Koi Merle", "Heavy Bone"],
+        name: "Say Somethin",
+        details: ["Koi"],
         gender: "Male",
         img: "/images/puppies/say-somethin-koi-male.jpg"
     },
     {
         id: 5,
-        name: "Rojo / Rojo / Male",
-        details: ["Pure Rojo DNA", "Investment Quality"],
+        name: "Rojo",
+        details: ["Rojo"],
         gender: "Male",
         img: "/images/puppies/rojo-male.jpg"
     },
     {
         id: 6,
-        name: "Vengeance / Rojo / Male",
-        details: ["Deep Rojo Tone", "Elite Bloodline"],
+        name: "Vengeance",
+        details: ["Rojo"],
         gender: "Male",
         img: "/images/puppies/vengeance-rojo-male.jpg"
     }
