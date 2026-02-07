@@ -45,12 +45,11 @@ export default function Navbar() {
                 </Link>
 
                 <div className="hidden lg:flex items-center gap-8">
-                    {['The Man', 'The Studs', 'The Pups', 'The Lab', 'The Contract'].map((item) => {
+                    {['The Man', 'The Studs', 'The Pups', 'The Lab'].map((item) => {
                         const slug = item.toLowerCase().replace(' ', '-').replace('the-', '');
                         const targetId = slug === 'man' ? 'about' :
                             slug === 'pups' ? 'puppies' :
-                                slug === 'lab' ? 'dna' :
-                                    slug === 'contract' ? 'trust' : 'studs';
+                                slug === 'lab' ? 'dna' : 'studs';
 
                         return (
                             <Link
@@ -74,12 +73,20 @@ export default function Navbar() {
                         </Link>
                     </div>
 
-                    <Link
-                        href="#contact"
-                        className="bg-green-primary text-white px-6 py-2.5 rounded-full text-sm font-bold hover:bg-green-dark transition-all transform hover:-translate-y-0.5 shadow-md flex items-center gap-2"
-                    >
-                        Reserve Now
-                    </Link>
+                    <div className="flex items-center gap-3">
+                        <Link
+                            href={`${isHome ? '' : '/'}#contact`}
+                            className={`text-sm font-bold uppercase tracking-wider px-4 py-2 hover:text-green-primary transition-colors ${isSolid ? 'text-text-primary' : 'text-white'}`}
+                        >
+                            Contact
+                        </Link>
+                        <Link
+                            href="/secure-your-pup"
+                            className="bg-green-primary text-white px-6 py-2.5 rounded-full text-xs font-black uppercase tracking-widest hover:bg-green-dark transition-all transform hover:-translate-y-0.5 shadow-[0_10px_20px_rgba(123,154,109,0.3)] border-b-2 border-black/20"
+                        >
+                            Secure Your Pup
+                        </Link>
+                    </div>
                 </div>
 
                 {/* Mobile Toggle */}
@@ -93,24 +100,40 @@ export default function Navbar() {
 
             {isOpen && (
                 <div className="lg:hidden absolute top-full left-0 w-full bg-white border-t border-gray-100 shadow-2xl py-12 flex flex-col items-center gap-10 animate-fade-in-up">
-                    {['The Man', 'The Studs', 'The Pups', 'The Lab', 'The Contract'].map((item) => {
+                    {['The Man', 'The Studs', 'The Pups', 'The Lab'].map((item) => {
                         const slug = item.toLowerCase().replace(' ', '-').replace('the-', '');
                         const targetId = slug === 'man' ? 'about' :
                             slug === 'pups' ? 'puppies' :
-                                slug === 'lab' ? 'dna' :
-                                    slug === 'contract' ? 'trust' : 'studs';
+                                slug === 'lab' ? 'dna' : 'studs';
 
                         return (
                             <Link
                                 key={item}
                                 href={`${isHome ? '' : '/'}#${targetId}`}
-                                className="text-2xl font-serif font-black text-text-primary tracking-tight hover:text-green-primary transition-colors"
+                                className="text-3xl font-serif font-black text-text-primary tracking-tight hover:text-green-primary transition-colors"
                                 onClick={() => setIsOpen(false)}
                             >
                                 {item}
                             </Link>
                         );
                     })}
+
+                    <div className="flex flex-col w-full px-10 gap-4 mt-4">
+                        <Link
+                            href="/secure-your-pup"
+                            className="w-full bg-green-primary text-white py-6 rounded-2xl text-center font-black uppercase tracking-[0.2em] shadow-xl text-lg"
+                            onClick={() => setIsOpen(false)}
+                        >
+                            Secure Your Pup
+                        </Link>
+                        <Link
+                            href={`${isHome ? '' : '/'}#contact`}
+                            className="w-full bg-text-primary text-white py-6 rounded-2xl text-center font-black uppercase tracking-[0.2em] shadow-xl text-lg"
+                            onClick={() => setIsOpen(false)}
+                        >
+                            Contact Us
+                        </Link>
+                    </div>
 
                     <div className="flex gap-8 mt-4">
                         <Link href="https://instagram.com/frenchiesrusny" target="_blank" className="bg-gray-100 p-4 rounded-full text-text-primary hover:bg-green-primary hover:text-white transition-all">

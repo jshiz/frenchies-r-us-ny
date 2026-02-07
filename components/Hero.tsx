@@ -79,20 +79,20 @@ export default function Hero() {
                     Raising the bar in New York's Capital Region.
                 </p>
 
-                <div className="flex flex-col sm:flex-row items-center justify-center gap-8">
+                <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
                     <Link
-                        href="#puppies"
-                        className="group bg-green-primary text-white px-12 py-5 rounded-full font-black text-xs uppercase tracking-[0.3em] hover:bg-white hover:text-black transition-all shadow-[0_0_30px_rgba(123,154,109,0.3)] transform hover:-translate-y-1 flex items-center gap-4"
+                        href="/secure-your-pup"
+                        className="group bg-green-primary text-white px-12 py-5 rounded-full font-black text-xs uppercase tracking-[0.3em] hover:bg-white hover:text-green-primary transition-all shadow-[0_20px_40px_rgba(123,154,109,0.4)] transform hover:-translate-y-1 flex items-center gap-4"
                     >
-                        Explore Pups
+                        Secure Your Pup
                         <ArrowRight size={18} className="group-hover:translate-x-2 transition-transform" />
                     </Link>
 
                     <Link
                         href="#contact"
-                        className="bg-transparent backdrop-blur-md border-2 border-white/30 text-white px-12 py-5 rounded-full font-black text-xs uppercase tracking-[0.3em] hover:bg-white hover:text-black transition-all shadow-xl"
+                        className="bg-transparent backdrop-blur-md border-2 border-white/30 text-white px-12 py-5 rounded-full font-black text-xs uppercase tracking-[0.3em] hover:bg-white hover:text-black transition-all shadow-xl transform hover:-translate-y-1"
                     >
-                        Join The HQ
+                        Contact HQ
                     </Link>
                 </div>
             </div>

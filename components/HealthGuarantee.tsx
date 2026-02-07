@@ -6,7 +6,7 @@ const GUARANTEES = [
     {
         icon: <ShieldCheck className="text-green-primary" />,
         title: "1-Year Health Guarantee",
-        desc: "We stand behind our bloodlines. Every pup comes with a legal 1-year contract protecting against congenital defects."
+        desc: "We stand behind our bloodlines. Every pup comes with a protective 1-year health agreement sent directly to your email."
     },
     {
         icon: <Stethoscope className="text-green-primary" />,
@@ -42,7 +42,7 @@ export default function HealthGuarantee() {
 
                             <h3 className="font-serif text-3xl font-black mb-6">The Royal Covenant</h3>
                             <p className="text-text-secondary leading-relaxed mb-8">
-                                Security isn't just a word; it's a contract. When you bring home a Frenchie from our HQ, you receive a full documentation packet detailing their lineage, health history, and our lifetime commitment to you.
+                                Security isn't just a word; it's a commitment. When you bring home a Frenchie from our HQ, you receive a digital documentation packet via email detailing their lineage, health history, and our lifetime commitment to you.
                             </p>
 
                             <ul className="space-y-4">
@@ -61,7 +61,7 @@ export default function HealthGuarantee() {
                             </ul>
 
                             <div className="mt-10 p-6 bg-cream-dark/30 rounded-2xl border border-cream-dark/50">
-                                <p className="text-xs font-mono uppercase tracking-tighter text-gray-500 mb-2">Contract Status:</p>
+                                <p className="text-xs font-mono uppercase tracking-tighter text-gray-500 mb-2">Guarantee Status:</p>
                                 <p className="font-marker text-green-dark text-xl">Legally Verified & Binding</p>
                             </div>
                         </div>

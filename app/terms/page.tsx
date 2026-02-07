@@ -29,7 +29,7 @@ export default function TermsOfService() {
 
                     <section>
                         <h2 className="font-serif text-2xl font-black text-text-primary mb-4">4. Health Guarantee</h2>
-                        <p>Every puppy comes with a limited health guarantee as outlined in the individual sales contract. It is the buyer's responsibility to have the puppy examined by a licensed veterinarian within 72 hours of receiving the animal.</p>
+                        <p>Every puppy comes with a limited health guarantee as outlined in your digital sales agreement provided via email. It is the buyer's responsibility to have the puppy examined by a licensed veterinarian within 72 hours of receiving the animal.</p>
                     </section>
 
                     <section>
