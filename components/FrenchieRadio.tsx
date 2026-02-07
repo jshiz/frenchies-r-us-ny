@@ -54,8 +54,8 @@ export default function FrenchieRadio() {
         setTimeout(() => {
             setTrackIndex((prev) => (prev + 1) % PLAYLIST.length);
             setIsPlaying(true);
-            setTimeout(() => setIsSwapping(false), 600);
-        }, 400);
+            setTimeout(() => setIsSwapping(false), 700);
+        }, 350);
     };
 
     const prevTrack = () => {
@@ -64,8 +64,12 @@ export default function FrenchieRadio() {
         setTimeout(() => {
             setTrackIndex((prev) => (prev - 1 + PLAYLIST.length) % PLAYLIST.length);
             setIsPlaying(true);
-            setTimeout(() => setIsSwapping(false), 600);
-        }, 400);
+            setTimeout(() => setIsSwapping(false), 700);
+        }, 350);
+    };
+
+    const handleSongEnd = () => {
+        nextTrack();
     };
 
     useEffect(() => {
@@ -73,66 +77,72 @@ export default function FrenchieRadio() {
             audioRef.current.src = PLAYLIST[trackIndex].src;
             audioRef.current.volume = 1;
             if (isPlaying) {
-                // Remove the !isSwapping check to ensure music plays immediately when source is set
                 audioRef.current.play().catch(e => console.error("Playback failed:", e));
             }
         }
-    }, [trackIndex, isPlaying]);
+    }, [trackIndex]);
 
     return (
         <>
             <style jsx global>{`
                 @keyframes record-exit {
-                    0% { transform: translate(0, 0) rotate(0deg) scale(1.05); opacity: 1; }
-                    100% { transform: translate(-150%, -100%) rotate(-45deg) scale(0.8); opacity: 0; }
+                    0% { transform: translate(0, 0) rotate(0deg) scale(1); opacity: 1; }
+                    100% { transform: translate(-120%, -100%) rotate(-60deg) scale(0.7); opacity: 0; }
                 }
                 @keyframes record-enter {
-                    0% { transform: translate(150%, 50%) rotate(45deg) scale(0.8); opacity: 0; }
-                    60% { transform: translate(-10%, -5%) rotate(-10deg) scale(1.05); opacity: 1; }
-                    100% { transform: translate(0, 0) rotate(0deg) scale(1.05); opacity: 1; }
+                    0% { transform: translate(120%, 80%) rotate(60deg) scale(0.7); opacity: 0; }
+                    100% { transform: translate(0, 0) rotate(0deg) scale(1); opacity: 1; }
                 }
                 @keyframes spin-slow {
                     from { transform: rotate(0deg); }
                     to { transform: rotate(360deg); }
                 }
-                .record-exit { animation: record-exit 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards; }
-                .record-enter { animation: record-enter 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) forwards; }
+                .record-exit { animation: record-exit 0.4s cubic-bezier(0.45, 0, 0.55, 1) forwards; }
+                .record-enter { animation: record-enter 0.6s cubic-bezier(0.34, 1.3, 0.64, 1) forwards; }
                 .animate-spin-slow { animation: spin-slow 12s linear infinite; }
             `}</style>
 
             <audio
                 ref={audioRef}
-                onEnded={nextTrack}
+                onEnded={handleSongEnd}
                 onPlay={() => setIsPlaying(true)}
                 onPause={() => setIsPlaying(false)}
             />
 
-            {/* Collapsed Widget - Hard Fixed Width for Symmetry */}
+            {/* Collapsed Widget - Fixed Size */}
             {!isExpanded && (
                 <button
                     onClick={() => setIsExpanded(true)}
                     className={`fixed bottom-6 right-6 z-[60] group flex items-center gap-3 bg-text-primary/90 backdrop-blur-xl border border-white/20 p-2 pr-6 rounded-full shadow-2xl hover:bg-white/30 transition-all duration-500 cursor-pointer animate-fade-in-up w-[250px] ${isPlaying ? 'animate-bounce-slow' : ''}`}
                 >
+                    {/* Art Container */}
                     <div
-                        className={`w-12 h-12 flex-shrink-0 flex items-center justify-center relative overflow-hidden transition-all duration-[1200ms] cubic-bezier(0.4, 0, 0.2, 1) group-hover:scale-110 ${isPlaying ? 'bg-green-primary shadow-[0_0_30px_rgba(123,154,109,0.5)] rounded-full' : 'bg-text-primary rounded-xl'}`}
+                        className={`w-12 h-12 flex-shrink-0 flex items-center justify-center relative overflow-hidden transition-all duration-[1000ms] cubic-bezier(0.4, 0, 0.2, 1) ${isPlaying ? 'rounded-full bg-green-primary shadow-[0_0_30px_rgba(123,154,109,0.5)]' : 'rounded-xl bg-text-primary'}`}
                     >
-                        <div className={`absolute inset-0 w-full h-full ${isSwapping ? 'record-exit' : 'record-enter'}`}>
+                        {/* The sliding record element - ALWAYS circular to avoid square "bouncing" */}
+                        <div className={`absolute inset-0 w-full h-full rounded-full overflow-hidden ${isSwapping ? 'record-exit' : 'record-enter'}`}>
                             <img
                                 src={PLAYLIST[trackIndex].art}
                                 alt="Art"
                                 className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${isPlaying ? 'opacity-40 animate-spin-slow' : 'opacity-20'}`}
                             />
+                            {/* Inner Vinyl details that slide with the record */}
+                            {isPlaying && (
+                                <div className="absolute inset-0 border-[8px] border-black/10 rounded-full animate-spin-slow"></div>
+                            )}
                         </div>
-                        {isPlaying ? (
+
+                        {!isPlaying && !isSwapping && (
+                            <Music2 size={24} className="relative z-10 text-white transition-opacity duration-500" />
+                        )}
+
+                        {isPlaying && !isSwapping && (
                             <div className="flex gap-0.5 items-end h-3 relative z-10">
                                 {[1, 2, 3].map(i => (
                                     <span key={i} className={`w-1 bg-white animate-[bounce_${0.8 + i * 0.2}s_infinite] h-${i === 2 ? '4' : '2'}`}></span>
                                 ))}
                             </div>
-                        ) : (
-                            <Music2 size={24} className="relative z-10 text-white" />
                         )}
-                        <div className={`absolute inset-0 border-[8px] border-black/10 rounded-full ${isPlaying ? 'animate-spin-slow' : ''}`}></div>
                     </div>
 
                     {isPlaying && (
@@ -145,14 +155,14 @@ export default function FrenchieRadio() {
                         <span className="text-[9px] font-black uppercase tracking-widest text-green-primary truncate w-full text-left">
                             {isPlaying ? 'Now Playing' : 'Elite Vibes'}
                         </span>
-                        <span className="text-sm font-serif font-black italic text-white truncate w-full text-left">
+                        <span className="text-sm font-serif font-black italic text-white truncate w-full text-left font-serif">
                             {isPlaying ? PLAYLIST[trackIndex].title : "Play Radio"}
                         </span>
                     </div>
                 </button>
             )}
 
-            {/* Expanded Player - Hard Fixed Size for Visual Stability */}
+            {/* Expanded Player - Fixed Size */}
             <div className={`fixed bottom-0 right-0 z-50 p-4 md:p-8 transition-all duration-700 ease-in-out pointer-events-none ${isExpanded ? 'translate-y-0 opacity-100 scale-100' : 'translate-y-20 opacity-0 scale-95 invisible'}`}>
                 <div className={`w-[90vw] md:w-[540px] bg-text-primary/90 backdrop-blur-3xl border border-white/10 shadow-[0_32px_64px_-16px_rgba(0,0,0,0.5)] rounded-[3rem] p-6 flex flex-row items-center gap-8 relative overflow-hidden group transition-all duration-500 ${isExpanded ? 'pointer-events-auto' : 'pointer-events-none'}`}>
 
@@ -199,10 +209,12 @@ export default function FrenchieRadio() {
 
                     <div className="flex flex-col items-center gap-4">
                         <div className="relative group/art">
+                            {/* Container Morph */}
                             <div
-                                className={`w-28 h-28 md:w-40 md:h-40 bg-text-primary flex-shrink-0 flex items-center justify-center text-white shadow-[0_20px_50px_rgba(0,0,0,0.5)] transition-all duration-[1200ms] cubic-bezier(0.4, 0, 0.2, 1) overflow-hidden relative ${isPlaying ? 'rounded-full scale-105' : 'rounded-[2rem] hover:scale-105'}`}
+                                className={`w-28 h-28 md:w-40 md:h-40 bg-text-primary flex-shrink-0 flex items-center justify-center text-white shadow-[0_20px_50px_rgba(0,0,0,0.5)] transition-all duration-[1000ms] cubic-bezier(0.4, 0, 0.2, 1) overflow-hidden relative ${isPlaying ? 'rounded-full scale-105' : 'rounded-[2rem]'}`}
                             >
-                                <div className={`absolute inset-0 w-full h-full ${isSwapping ? 'record-exit' : 'record-enter'}`}>
+                                {/* Sliding Record element - Force circular at all times */}
+                                <div className={`absolute inset-0 w-full h-full rounded-full overflow-hidden ${isSwapping ? 'record-exit' : 'record-enter'}`}>
                                     <img
                                         src={PLAYLIST[trackIndex].art}
                                         alt={PLAYLIST[trackIndex].title}
@@ -210,8 +222,8 @@ export default function FrenchieRadio() {
                                     />
 
                                     {isPlaying && (
-                                        <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                                            <div className="w-4 h-4 md:w-6 md:h-6 bg-white rounded-full z-20 border-2 border-black/20 shadow-inner"></div>
+                                        <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-20">
+                                            <div className="w-4 h-4 md:w-6 md:h-6 bg-white rounded-full border-2 border-black/20 shadow-inner"></div>
                                             <div className="absolute inset-0 border-[14px] border-black/40 rounded-full"></div>
                                             <div className="absolute inset-0 border-4 border-black/20 rounded-full"></div>
                                             <div className="absolute inset-[30px] md:inset-[40px] border border-white/5 rounded-full"></div>
