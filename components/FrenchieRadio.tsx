@@ -35,6 +35,7 @@ export default function FrenchieRadio() {
     const [isPlaying, setIsPlaying] = useState(false);
     const [trackIndex, setTrackIndex] = useState(0);
     const [isExpanded, setIsExpanded] = useState(false);
+    const [isSwapping, setIsSwapping] = useState(false);
     const audioRef = useRef<HTMLAudioElement | null>(null);
 
     const togglePlay = () => {
@@ -48,20 +49,30 @@ export default function FrenchieRadio() {
     };
 
     const nextTrack = () => {
-        setTrackIndex((prev) => (prev + 1) % PLAYLIST.length);
-        setIsPlaying(true);
+        if (isSwapping) return;
+        setIsSwapping(true);
+        setTimeout(() => {
+            setTrackIndex((prev) => (prev + 1) % PLAYLIST.length);
+            setIsPlaying(true);
+            setTimeout(() => setIsSwapping(false), 600);
+        }, 400);
     };
 
     const prevTrack = () => {
-        setTrackIndex((prev) => (prev - 1 + PLAYLIST.length) % PLAYLIST.length);
-        setIsPlaying(true);
+        if (isSwapping) return;
+        setIsSwapping(true);
+        setTimeout(() => {
+            setTrackIndex((prev) => (prev - 1 + PLAYLIST.length) % PLAYLIST.length);
+            setIsPlaying(true);
+            setTimeout(() => setIsSwapping(false), 600);
+        }, 400);
     };
 
     useEffect(() => {
         if (audioRef.current) {
             audioRef.current.src = PLAYLIST[trackIndex].src;
             audioRef.current.volume = 1;
-            if (isPlaying) {
+            if (isPlaying && !isSwapping) {
                 audioRef.current.play().catch(e => console.error("Playback failed:", e));
             }
         }
@@ -69,6 +80,25 @@ export default function FrenchieRadio() {
 
     return (
         <>
+            <style jsx global>{`
+                @keyframes record-exit {
+                    0% { transform: translate(0, 0) rotate(0deg) scale(1.05); opacity: 1; }
+                    100% { transform: translate(-150%, -100%) rotate(-45deg) scale(0.8); opacity: 0; }
+                }
+                @keyframes record-enter {
+                    0% { transform: translate(150%, 50%) rotate(45deg) scale(0.8); opacity: 0; }
+                    60% { transform: translate(-10%, -5%) rotate(-10deg) scale(1.05); opacity: 1; }
+                    100% { transform: translate(0, 0) rotate(0deg) scale(1.05); opacity: 1; }
+                }
+                @keyframes spin-slow {
+                    from { transform: rotate(0deg); }
+                    to { transform: rotate(360deg); }
+                }
+                .record-exit { animation: record-exit 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards; }
+                .record-enter { animation: record-enter 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) forwards; }
+                .animate-spin-slow { animation: spin-slow 12s linear infinite; }
+            `}</style>
+
             <audio
                 ref={audioRef}
                 onEnded={nextTrack}
@@ -85,11 +115,13 @@ export default function FrenchieRadio() {
                     <div
                         className={`w-12 h-12 flex items-center justify-center relative overflow-hidden transition-all duration-[1200ms] cubic-bezier(0.4, 0, 0.2, 1) group-hover:scale-110 ${isPlaying ? 'bg-green-primary shadow-[0_0_30px_rgba(123,154,109,0.5)] rounded-full' : 'bg-text-primary rounded-xl'}`}
                     >
-                        <img
-                            src={PLAYLIST[trackIndex].art}
-                            alt="Art"
-                            className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${isPlaying ? 'opacity-40 animate-spin-slow' : 'opacity-20'}`}
-                        />
+                        <div className={`absolute inset-0 w-full h-full ${isSwapping ? 'record-exit' : 'record-enter'}`}>
+                            <img
+                                src={PLAYLIST[trackIndex].art}
+                                alt="Art"
+                                className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${isPlaying ? 'opacity-40 animate-spin-slow' : 'opacity-20'}`}
+                            />
+                        </div>
                         {isPlaying ? (
                             <div className="flex gap-0.5 items-end h-3 relative z-10">
                                 {[1, 2, 3].map(i => (
@@ -117,23 +149,19 @@ export default function FrenchieRadio() {
                 </button>
             )}
 
-            {/* Expanded Player - Repositioned to Bottom Right */}
+            {/* Expanded Player */}
             <div className={`fixed bottom-0 right-0 z-50 p-4 md:p-8 transition-all duration-700 ease-in-out pointer-events-none ${isExpanded ? 'translate-y-0 opacity-100 scale-100' : 'translate-y-20 opacity-0 scale-95'}`}>
                 <div className="max-w-xl bg-text-primary/95 backdrop-blur-3xl border border-white/10 shadow-[0_32px_64px_-16px_rgba(0,0,0,0.5)] rounded-[3rem] p-6 flex flex-row items-center gap-8 pointer-events-auto relative overflow-hidden group">
 
-                    {/* Background Glow */}
                     <div className="absolute top-0 right-0 w-64 h-64 bg-green-primary/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 group-hover:bg-green-primary/20 transition-all duration-1000"></div>
 
-                    {/* Left Side: Text Info & Controls */}
                     <div className="flex-1 min-w-0 flex flex-col justify-between py-2">
                         <div className="space-y-4">
-                            {/* Branding Row */}
                             <div className="flex items-center gap-2">
                                 <span className="flex-shrink-0 h-2 w-2 rounded-full bg-green-primary animate-pulse"></span>
                                 <p className="text-[10px] text-green-primary font-black uppercase tracking-[0.3em] truncate">Frenchies R Us Radio</p>
                             </div>
 
-                            {/* Large Title Row */}
                             <div className="min-w-0">
                                 <h4 className="font-serif text-2xl md:text-4xl font-black text-white italic leading-tight truncate pr-4">
                                     {PLAYLIST[trackIndex].title}
@@ -142,7 +170,6 @@ export default function FrenchieRadio() {
                             </div>
                         </div>
 
-                        {/* Controls Row */}
                         <div className="flex items-center gap-4 mt-8">
                             <button
                                 onClick={prevTrack}
@@ -167,29 +194,29 @@ export default function FrenchieRadio() {
                         </div>
                     </div>
 
-                    {/* Right Side: Visualizer & Large Album Art */}
                     <div className="flex flex-col items-center gap-4">
                         <div className="relative group/art">
                             <div
                                 className={`w-28 h-28 md:w-40 md:h-40 bg-text-primary flex-shrink-0 flex items-center justify-center text-white shadow-[0_20px_50px_rgba(0,0,0,0.5)] transition-all duration-[1200ms] cubic-bezier(0.4, 0, 0.2, 1) overflow-hidden relative ${isPlaying ? 'rounded-full scale-105' : 'rounded-[2rem] hover:scale-105'}`}
                             >
-                                <img
-                                    src={PLAYLIST[trackIndex].art}
-                                    alt={PLAYLIST[trackIndex].title}
-                                    className={`absolute inset-0 w-full h-full object-cover transition-transform duration-1000 ${isPlaying ? 'scale-110 opacity-90 animate-spin-slow' : 'scale-100'}`}
-                                />
+                                <div className={`absolute inset-0 w-full h-full ${isSwapping ? 'record-exit' : 'record-enter'}`}>
+                                    <img
+                                        src={PLAYLIST[trackIndex].art}
+                                        alt={PLAYLIST[trackIndex].title}
+                                        className={`absolute inset-0 w-full h-full object-cover transition-transform duration-1000 ${isPlaying ? 'scale-110 opacity-90 animate-spin-slow' : 'scale-100'}`}
+                                    />
 
-                                {isPlaying && (
-                                    <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                                        <div className="w-4 h-4 md:w-6 md:h-6 bg-white rounded-full z-20 border-2 border-black/20 shadow-inner"></div>
-                                        <div className="absolute inset-0 border-[14px] border-black/40 rounded-full"></div>
-                                        <div className="absolute inset-0 border-4 border-black/20 rounded-full"></div>
-                                        <div className="absolute inset-[30px] md:inset-[40px] border border-white/5 rounded-full"></div>
-                                    </div>
-                                )}
+                                    {isPlaying && (
+                                        <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                                            <div className="w-4 h-4 md:w-6 md:h-6 bg-white rounded-full z-20 border-2 border-black/20 shadow-inner"></div>
+                                            <div className="absolute inset-0 border-[14px] border-black/40 rounded-full"></div>
+                                            <div className="absolute inset-0 border-4 border-black/20 rounded-full"></div>
+                                            <div className="absolute inset-[30px] md:inset-[40px] border border-white/5 rounded-full"></div>
+                                        </div>
+                                    )}
+                                </div>
                             </div>
 
-                            {/* Minimize Button - Integrated near art */}
                             <button
                                 onClick={() => setIsExpanded(false)}
                                 className="absolute -top-3 -right-3 bg-text-primary/90 backdrop-blur-xl p-2 text-gray-400 hover:text-white rounded-full border border-white/10 shadow-xl transition-all z-30"
@@ -198,7 +225,6 @@ export default function FrenchieRadio() {
                             </button>
                         </div>
 
-                        {/* Equalizer moved to Right Side under Art */}
                         <div className="h-8 flex items-center">
                             <SymmetricalEQ isPlaying={isPlaying} />
                         </div>
