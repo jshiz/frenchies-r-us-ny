@@ -24,7 +24,23 @@ const Equalizer = () => (
                 className="w-1 bg-green-primary rounded-full animate-bounce"
                 style={{
                     animationDuration: `${0.6 + Math.abs(i - 4) * 0.15}s`,
-                    height: `${h * 100}%`
+                    height: `${isPlaying ? (h * 100) + '%' : '15%'}`
+                }}
+            ></span>
+        ))}
+    </div>
+);
+
+// Helper for EQ since it needs access to playing state if moved, but we can just pass it
+const SymmetricalEQ = ({ isPlaying }: { isPlaying: boolean }) => (
+    <div className="flex gap-1 items-end h-6 w-12 justify-center">
+        {[0.6, 0.4, 0.8, 0.5, 0.7, 0.5, 0.8, 0.4, 0.6].map((h, i) => (
+            <span
+                key={i}
+                className={`w-1 bg-green-primary rounded-full ${isPlaying ? 'animate-bounce' : ''}`}
+                style={{
+                    animationDuration: `${0.6 + Math.abs(i - 4) * 0.15}s`,
+                    height: isPlaying ? `${h * 100}%` : '2px'
                 }}
             ></span>
         ))}
@@ -60,7 +76,7 @@ export default function FrenchieRadio() {
     useEffect(() => {
         if (audioRef.current) {
             audioRef.current.src = PLAYLIST[trackIndex].src;
-            audioRef.current.volume = 1; // Always 100%
+            audioRef.current.volume = 1;
             if (isPlaying) {
                 audioRef.current.play().catch(e => console.error("Playback failed:", e));
             }
@@ -108,89 +124,97 @@ export default function FrenchieRadio() {
 
                     <div className="flex flex-col items-start translate-x-1 group-hover:translate-x-2 transition-transform pr-2">
                         <span className="text-[9px] font-black uppercase tracking-widest text-green-primary">Playing</span>
-                        <span className="text-xs font-serif font-black italic text-white truncate max-w-[120px] pr-2">
+                        <span className="text-sm font-serif font-black italic text-white truncate max-w-[120px] pr-2">
                             {isPlaying ? PLAYLIST[trackIndex].title : "Radio"}
                         </span>
                     </div>
                 </button>
             )}
 
-            {/* Expanded Player - Compact & Mobile Optimized */}
+            {/* Expanded Player - Reworked Layout */}
             <div className={`fixed bottom-0 left-0 right-0 z-50 p-4 md:p-6 transition-all duration-700 ease-in-out pointer-events-none ${isExpanded ? 'translate-y-0 opacity-100' : 'translate-y-full opacity-0'}`}>
-                <div className="max-w-xl mx-auto bg-text-primary/95 backdrop-blur-2xl border border-white/10 shadow-[0_32px_64px_-16px_rgba(0,0,0,0.5)] rounded-[2.5rem] p-4 flex items-center gap-4 pointer-events-auto relative overflow-hidden group">
+                <div className="max-w-xl mx-auto bg-text-primary/95 backdrop-blur-3xl border border-white/10 shadow-[0_32px_64px_-16px_rgba(0,0,0,0.5)] rounded-[3rem] p-6 flex flex-row items-center gap-8 pointer-events-auto relative overflow-hidden group">
 
                     {/* Background Glow */}
-                    <div className="absolute top-0 right-0 w-48 h-48 bg-green-primary/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 group-hover:bg-green-primary/20 transition-all duration-1000"></div>
+                    <div className="absolute top-0 right-0 w-64 h-64 bg-green-primary/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 group-hover:bg-green-primary/20 transition-all duration-1000"></div>
 
-                    {/* Album Art Icon */}
-                    <div className="relative flex-shrink-0">
-                        <div className={`w-16 h-16 md:w-20 md:h-20 bg-text-primary rounded-2xl flex-shrink-0 flex items-center justify-center shadow-xl transition-all duration-1000 overflow-hidden relative ${isPlaying ? 'rotate-[360deg] rounded-full' : ''}`}>
-                            <img
-                                src={PLAYLIST[trackIndex].art}
-                                alt={PLAYLIST[trackIndex].title}
-                                className={`absolute inset-0 w-full h-full object-cover transition-transform duration-1000 ${isPlaying ? 'scale-110 opacity-80 animate-spin-slow' : 'scale-100'}`}
-                            />
-                            {isPlaying && (
-                                <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                                    <div className="w-3 h-3 bg-white rounded-full z-20 border-2 border-black/20"></div>
-                                    <div className="absolute inset-0 border-[6px] border-black/40 rounded-full"></div>
-                                </div>
-                            )}
-                        </div>
-                    </div>
-
-                    {/* Track Info & Controls Group */}
-                    <div className="flex-1 min-w-0 flex flex-col gap-3">
-                        {/* Branding & Equalizer Row */}
-                        <div className="flex items-center justify-between gap-4">
-                            <div className="flex items-center gap-1.5 min-w-0">
-                                <span className="flex-shrink-0 h-1.5 w-1.5 rounded-full bg-green-primary animate-pulse"></span>
-                                <p className="text-[8px] md:text-[9px] text-green-primary font-black uppercase tracking-widest truncate">Frenchies R Us Radio</p>
+                    {/* Left Side: Text Info & Controls */}
+                    <div className="flex-1 min-w-0 flex flex-col justify-between py-2">
+                        <div className="space-y-4">
+                            {/* Branding Row */}
+                            <div className="flex items-center gap-2">
+                                <span className="flex-shrink-0 h-2 w-2 rounded-full bg-green-primary animate-pulse"></span>
+                                <p className="text-[10px] text-green-primary font-black uppercase tracking-[0.3em] truncate">Frenchies R Us Radio</p>
                             </div>
-                            {isPlaying && <div className="flex-shrink-0 scale-75 origin-right"><Equalizer /></div>}
-                        </div>
 
-                        {/* Large Title Row */}
-                        <div className="min-w-0">
-                            <h4 className="font-serif text-xl md:text-2xl font-black text-white italic leading-none truncate pr-4">
-                                {PLAYLIST[trackIndex].title}
-                            </h4>
+                            {/* Large Title Row */}
+                            <div className="min-w-0">
+                                <h4 className="font-serif text-2xl md:text-4xl font-black text-white italic leading-tight truncate pr-4">
+                                    {PLAYLIST[trackIndex].title}
+                                </h4>
+                                <p className="text-gray-500 text-[10px] md:text-xs font-bold uppercase tracking-widest mt-1 opacity-60">Masterwork Bloodline</p>
+                            </div>
                         </div>
 
                         {/* Controls Row */}
-                        <div className="flex items-center gap-4">
-                            <div className="flex items-center gap-3">
-                                <button
-                                    onClick={prevTrack}
-                                    className="p-1 text-gray-500 hover:text-white transition-all active:scale-90"
-                                >
-                                    <SkipBack size={18} fill="currentColor" />
-                                </button>
+                        <div className="flex items-center gap-4 mt-8">
+                            <button
+                                onClick={prevTrack}
+                                className="p-2 text-gray-500 hover:text-white transition-all active:scale-90"
+                            >
+                                <SkipBack size={24} fill="currentColor" />
+                            </button>
 
-                                <button
-                                    onClick={togglePlay}
-                                    className="w-10 h-10 bg-white text-text-primary rounded-full flex items-center justify-center hover:bg-green-primary hover:text-white transition-all duration-300 shadow-xl active:scale-95"
-                                >
-                                    {isPlaying ? <Pause size={20} fill="currentColor" /> : <Play size={20} fill="currentColor" className="ml-0.5" />}
-                                </button>
+                            <button
+                                onClick={togglePlay}
+                                className="w-14 h-14 bg-white text-text-primary rounded-full flex items-center justify-center hover:bg-green-primary hover:text-white transition-all duration-500 shadow-2xl active:scale-95 group/play"
+                            >
+                                {isPlaying ? <Pause size={28} fill="currentColor" /> : <Play size={28} fill="currentColor" className="ml-1" />}
+                            </button>
 
-                                <button
-                                    onClick={nextTrack}
-                                    className="p-1 text-gray-500 hover:text-white transition-all active:scale-90"
-                                >
-                                    <SkipForward size={18} fill="currentColor" />
-                                </button>
-                            </div>
+                            <button
+                                onClick={nextTrack}
+                                className="p-2 text-gray-500 hover:text-white transition-all active:scale-90"
+                            >
+                                <SkipForward size={24} fill="currentColor" />
+                            </button>
                         </div>
                     </div>
 
-                    {/* Minimize Button - Fixed Position */}
-                    <button
-                        onClick={() => setIsExpanded(false)}
-                        className="p-2 text-gray-500 hover:text-white rounded-full transition-all group/close"
-                    >
-                        <ChevronDown size={20} className="group-hover:translate-y-0.5 transition-transform" />
-                    </button>
+                    {/* Right Side: Visualizer & Large Album Art */}
+                    <div className="flex flex-col items-center gap-4">
+                        <div className="relative group/art">
+                            <div className={`w-28 h-28 md:w-40 md:h-40 bg-text-primary rounded-3xl flex-shrink-0 flex items-center justify-center text-white shadow-[0_20px_50px_rgba(0,0,0,0.5)] transition-all duration-1000 overflow-hidden relative ${isPlaying ? 'rotate-[360deg] rounded-full scale-105' : 'hover:scale-105'}`}>
+                                <img
+                                    src={PLAYLIST[trackIndex].art}
+                                    alt={PLAYLIST[trackIndex].title}
+                                    className={`absolute inset-0 w-full h-full object-cover transition-transform duration-1000 ${isPlaying ? 'scale-110 opacity-90 animate-spin-slow' : 'scale-100'}`}
+                                />
+
+                                {isPlaying && (
+                                    <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                                        <div className="w-4 h-4 md:w-6 md:h-6 bg-white rounded-full z-20 border-2 border-black/20 shadow-inner"></div>
+                                        <div className="absolute inset-0 border-[14px] border-black/40 rounded-full"></div>
+                                        <div className="absolute inset-0 border-4 border-black/20 rounded-full"></div>
+                                        <div className="absolute inset-[30px] md:inset-[40px] border border-white/5 rounded-full"></div>
+                                    </div>
+                                )}
+                            </div>
+
+                            {/* Minimize Button - Integrated near art */}
+                            <button
+                                onClick={() => setIsExpanded(false)}
+                                className="absolute -top-3 -right-3 bg-text-primary/90 backdrop-blur-xl p-2 text-gray-400 hover:text-white rounded-full border border-white/10 shadow-xl transition-all z-30"
+                            >
+                                <ChevronDown size={20} />
+                            </button>
+                        </div>
+
+                        {/* Equalizer moved to Right Side under Art */}
+                        <div className="h-8 flex items-center">
+                            <SymmetricalEQ isPlaying={isPlaying} />
+                        </div>
+                    </div>
                 </div>
             </div>
         </>
