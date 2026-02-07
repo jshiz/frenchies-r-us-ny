@@ -63,7 +63,7 @@ export default function Hero() {
                 <div className="inline-block relative mb-8 transform rotate-0 md:-rotate-1 hover:rotate-0 transition-all duration-500">
                     <div className="absolute inset-0 bg-white transform skew-x-[-15deg] rounded-lg shadow-2xl"></div>
                     <span className="relative font-marker text-green-dark text-xl md:text-3xl px-8 py-3 block leading-none">
-                        NYC'S FINEST FRENCHIES 👑
+                        NY'S FINEST FRENCHIES 👑
                     </span>
                 </div>
 
