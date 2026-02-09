@@ -1,6 +1,6 @@
 'use client';
 
-import { ShieldCheck, Heart, Zap, Sparkles, BookOpen, Crown, Microscope, Utensils } from 'lucide-react';
+import { ShieldCheck, Heart, Zap, Sparkles, Star, Crown, Microscope, Utensils } from 'lucide-react';
 import PaintSmear from './PaintSmear';
 
 const FEATURES = [
@@ -61,44 +61,78 @@ export default function ExtendedFeatures() {
                     ))}
                 </div>
 
-                {/* Second Creative Layer: Reading Material */}
-                <div className="mt-24 grid grid-cols-1 lg:grid-cols-2 gap-12">
-                    <div className="bg-text-primary rounded-[4rem] p-10 md:p-16 text-white relative overflow-hidden group">
-                        <div className="absolute top-0 right-0 w-64 h-64 bg-green-primary/10 rounded-full blur-3xl group-hover:bg-green-primary/20 transition-all"></div>
-                        <div className="relative z-10">
-                            <BookOpen className="text-green-primary mb-8" size={64} />
-                            <h3 className="font-serif text-4xl md:text-6xl font-black mb-6 leading-none tracking-tighter uppercase italic">The Frenchie <br />Bible.</h3>
-                            <p className="text-gray-400 text-lg mb-8 leading-relaxed max-w-sm">
-                                Why do they snore? Why are exotic colors rare? We are compiling the world's most detailed library on the French Bulldog breed.
-                            </p>
-                            <button className="bg-white text-text-primary px-8 py-4 rounded-full font-black text-xs uppercase tracking-widest hover:bg-green-primary hover:text-white transition-all">
-                                Launching Spring 2026
-                            </button>
+                {/* Testimonials Section */}
+                <div className="mt-24">
+                    <div className="flex items-center gap-4 mb-12">
+                        <div className="w-12 h-12 bg-green-primary/10 rounded-full flex items-center justify-center text-green-primary">
+                            <Sparkles size={24} />
                         </div>
+                        <span className="font-marker text-green-primary text-xl tracking-widest uppercase">Elite Feedback</span>
                     </div>
 
-                    <div className="bg-white rounded-[4rem] p-10 md:p-16 border-4 border-cream relative overflow-hidden group shadow-xl flex flex-col justify-between">
-                        <div>
-                            <div className="flex items-center gap-4 mb-8">
-                                <div className="w-12 h-12 bg-green-primary/10 rounded-full flex items-center justify-center text-green-primary">
-                                    <Sparkles size={24} />
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        {[
+                            {
+                                name: "Sarah M.",
+                                location: "Brooklyn, NY",
+                                rating: 5,
+                                text: "Absolutely in love with our lilac pup. The process was seamless and Kevin was so helpful throughout!"
+                            },
+                            {
+                                name: "Marcus R.",
+                                location: "Queens, NY",
+                                rating: 5,
+                                text: "Best breeder in NY! Our little guy is so healthy, well-socialized, and has the best temperament."
+                            },
+                            {
+                                name: "Elena G.",
+                                location: "Albany, NY",
+                                rating: 4.8,
+                                text: "The level of care and genetics here is unmatched. You can tell they really love these dogs."
+                            },
+                            {
+                                name: "The Jacobs Family",
+                                location: "Scarsdale, NY",
+                                rating: 5,
+                                text: "We searched for months and finally found the perfect match. Healthy, happy, and so sweet!"
+                            },
+                            {
+                                name: "David S.",
+                                location: "Manhattan, NY",
+                                rating: 4.9,
+                                text: "Professional, knowledgeable, and genuinely cares. The follow-up support has been incredible."
+                            },
+                            {
+                                name: "Jessica K.",
+                                location: "Buffalo, NY",
+                                rating: 5,
+                                text: "Our vet was deeply impressed by the health clearances and structural quality. Elite bloodlines."
+                            }
+                        ].map((t, i) => (
+                            <div key={i} className="bg-white rounded-[2rem] p-8 border border-gray-100 shadow-sm hover:shadow-xl transition-all group">
+                                <div className="flex gap-1 mb-4">
+                                    {[...Array(5)].map((_, starIndex) => (
+                                        <Star
+                                            key={starIndex}
+                                            size={16}
+                                            className={`${starIndex < Math.floor(t.rating) ? 'fill-green-primary text-green-primary' : 'text-gray-200'} ${starIndex === Math.floor(t.rating) && t.rating % 1 !== 0 ? 'fill-green-primary/50 text-green-primary' : ''}`}
+                                        />
+                                    ))}
                                 </div>
-                                <span className="font-marker text-green-primary text-xl tracking-widest uppercase">Member Spotlight</span>
+                                <p className="text-text-secondary text-sm italic mb-6 leading-relaxed">
+                                    "{t.text}"
+                                </p>
+                                <div className="flex items-center gap-3 border-t border-gray-50 pt-4">
+                                    <div className="w-10 h-10 bg-cream rounded-full flex items-center justify-center font-bold text-green-primary text-xs">
+                                        {t.name.split(' ').map(n => n[0]).join('')}
+                                    </div>
+                                    <div>
+                                        <p className="font-serif font-black text-text-primary text-sm italic">{t.name}</p>
+                                        <p className="text-[9px] font-black uppercase tracking-wider text-green-primary/70">{t.location}</p>
+                                    </div>
+                                </div>
                             </div>
-                            <h3 className="font-serif text-3xl md:text-5xl font-black text-text-primary mb-6 leading-none tracking-tighter uppercase italic">From our headquarters <br /> to your home.</h3>
-                            <p className="text-text-secondary text-lg leading-relaxed max-w-sm italic">
-                                "Kevin helped us choose Kingston specifically based on his calm temperament for our kids. Best decision we ever made." — The Smith Family, Manhattan
-                            </p>
-                        </div>
-                        <div className="mt-8 flex items-center gap-4 border-t border-gray-100 pt-8">
-                            <div className="w-16 h-16 bg-cream rounded-full overflow-hidden border-2 border-green-primary p-1">
-                                <div className="w-full h-full bg-gray-200 rounded-full flex items-center justify-center font-black text-text-primary">FR</div>
-                            </div>
-                            <div>
-                                <p className="font-serif font-black text-text-primary italic text-xl leading-none">Kingston</p>
-                                <p className="text-[10px] font-black uppercase tracking-widest text-green-primary mt-1">Lilac & Tan / Manhattan, NY</p>
-                            </div>
-                        </div>
+                        ))}
                     </div>
                 </div>
 

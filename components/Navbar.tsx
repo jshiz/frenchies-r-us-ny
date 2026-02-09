@@ -35,10 +35,10 @@ export default function Navbar() {
                         />
                     </div>
                     <div className="flex flex-row items-center gap-1 lg:gap-4 ml-1 transition-all">
-                        <span className={`font-serif text-base sm:text-lg lg:text-3xl font-black tracking-tight ${isSolid ? 'text-text-primary' : 'text-white'} drop-shadow-md leading-none`}>
+                        <span className={`font-serif text-xl sm:text-2xl lg:text-3xl font-black tracking-tight ${isSolid ? 'text-text-primary' : 'text-white'} drop-shadow-md leading-none`}>
                             Frenchies
                         </span>
-                        <span className={`font-marker text-[10px] sm:text-sm lg:text-2xl tracking-widest ${isSolid ? 'text-green-primary' : 'text-green-light'} rotate-[-2deg] leading-none whitespace-nowrap`}>
+                        <span className={`font-marker text-xs sm:text-base lg:text-2xl tracking-widest ${isSolid ? 'text-green-primary' : 'text-green-light'} rotate-[-2deg] leading-none whitespace-nowrap`}>
                             R US
                         </span>
                     </div>
