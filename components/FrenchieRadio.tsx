@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useRef, useEffect } from 'react';
-import { Play, Pause, SkipBack, SkipForward, Music2, ChevronDown, ChevronLeft, X } from 'lucide-react';
+import { Play, Pause, SkipBack, SkipForward, Music2, ChevronDown, ChevronLeft, X, Download } from 'lucide-react';
 
 const PLAYLIST = [
     { id: 1, title: "The Anthem", artist: "Frenchie Royal", src: "/music/The Anthem.mp3", art: "/music/The Anthem.jpeg" },
@@ -168,6 +168,18 @@ export default function FrenchieRadio() {
                             >
                                 <SkipForward size={24} fill="currentColor" />
                             </button>
+
+                            <a
+                                href={PLAYLIST[trackIndex].src}
+                                download={`${PLAYLIST[trackIndex].title}.mp3`}
+                                className="ml-2 p-2 text-gray-400 hover:text-green-primary transition-all active:scale-90 group/download relative"
+                                title="Download Track"
+                            >
+                                <Download size={22} />
+                                <span className="absolute -top-8 left-1/2 -translate-x-1/2 bg-text-primary text-white text-[10px] py-1 px-2 rounded opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap border border-white/10">
+                                    Download MP3
+                                </span>
+                            </a>
                         </div>
                     </div>
 
