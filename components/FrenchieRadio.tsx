@@ -121,7 +121,7 @@ export default function FrenchieRadio() {
                         onClick={togglePlay}
                         className="w-9 h-9 flex items-center justify-center text-white hover:text-green-primary transition-all active:scale-90 cursor-pointer mr-0.5"
                     >
-                        {isPlaying ? <Pause size={18} fill="currentColor" /> : <Play size={18} fill="currentColor" className="ml-0.5" />}
+                        {isPlaying ? <Pause size={18} /> : <Play size={18} className="ml-0.5" />}
                     </button>
                 </div>
             )}
@@ -152,21 +152,21 @@ export default function FrenchieRadio() {
                                 onClick={prevTrack}
                                 className="p-2 text-gray-400 hover:text-white transition-all active:scale-90"
                             >
-                                <SkipBack size={24} fill="currentColor" />
+                                <SkipBack size={24} />
                             </button>
 
                             <button
                                 onClick={togglePlay}
-                                className="w-14 h-14 bg-white text-text-primary rounded-full flex items-center justify-center hover:bg-green-primary hover:text-white transition-all duration-500 shadow-2xl active:scale-95 group/play"
+                                className="w-14 h-14 bg-white text-text-primary rounded-full flex items-center justify-center hover:bg-green-primary hover:text-white transition-all duration-500 shadow-xl active:scale-95 group/play"
                             >
-                                {isPlaying ? <Pause size={28} fill="currentColor" /> : <Play size={28} fill="currentColor" className="ml-1" />}
+                                {isPlaying ? <Pause size={28} /> : <Play size={28} className="ml-1" />}
                             </button>
 
                             <button
                                 onClick={nextTrack}
                                 className="p-2 text-gray-400 hover:text-white transition-all active:scale-90"
                             >
-                                <SkipForward size={24} fill="currentColor" />
+                                <SkipForward size={24} />
                             </button>
 
                             <a
